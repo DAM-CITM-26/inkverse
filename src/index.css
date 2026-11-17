@@ -106,12 +106,27 @@ main {
   place-items: center;
   border-radius: 50%;
 }
+
+/* Forzar estilos al svg */
+.nav-icon svg [fill]:not([fill="none"]) { fill: currentColor; }
+.nav-icon svg [stroke]:not([stroke="none"]) { stroke: currentColor; }
+.nav-icon svg [stroke] { stroke-width: 0.95; }
+
 .nav-icon svg { display: block; }
 
 /* Seleccionado: círculo naranja con el icono oscuro encima */
 .pestanas .activa .nav-icon {
   background: var(--color-primario);
   color: var(--color-sobre-primario);
+}
+
+.pestanas .activa .nav-icon svg [stroke]  {
+  stroke-width: 2;
+}
+
+/* Biblioteca: se rellena al seleccionarla */
+.pestanas .activa .icon-fill path {
+  fill: currentColor;
 }
 
 /* 3. PATRONES */
