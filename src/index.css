@@ -160,6 +160,10 @@ main {
   color: var(--color-texto);
 
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-texto); /* icono sin seleccionar: crema */
   text-decoration: none;
 }
 
@@ -178,10 +182,15 @@ main {
 
 .nav-icon svg {
   display: block;
+  fill: none;
+  stroke: currentColor;
 }
 
+/* Inactivo: solo contorno */
 .nav-icon svg [fill]:not([fill="none"]) {
-  fill: currentColor;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 0.95;
 }
 
 .nav-icon svg [stroke]:not([stroke="none"]) {
@@ -192,20 +201,23 @@ main {
   stroke-width: 0.95;
 }
 
-
-/* Icono seleccionado */
-
 .pestanas .activa .nav-icon {
   background: var(--color-primario);
   color: var(--color-sobre-primario);
 }
 
-.pestanas .activa .nav-icon svg [stroke] {
-  stroke-width: 2;
+.pestanas .activa .nav-icon svg {
+  fill: currentColor;
+  stroke: none;
 }
 
-.pestanas .activa .icon-fill path {
+.pestanas .activa .nav-icon svg [fill]:not([fill="none"]) {
   fill: currentColor;
+  stroke: none;
+}
+
+.pestanas .activa .nav-icon svg [stroke] {
+  stroke-width: 1.5;
 }
 
 
