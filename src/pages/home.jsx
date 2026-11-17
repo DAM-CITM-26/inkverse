@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import UniverseCard from '../components/molecules/UniverseCard'
 import Logo from '../components/atoms/Logo'
+import HomeHero from '../components/molecules/HomeHero'
 
 function ContinueReadingItem({ title, progress }) {
   return (
@@ -72,10 +73,10 @@ function Home() {
       </header>
 
       <div className="home__content">
-        <section className="home-hero">
-          <h1>What will you read or watch next?</h1>
-          <p>Pick up where you left off, or find your next favourite.</p>
-        </section>
+        <HomeHero
+          title="What will you read or watch next?"
+          subtitle="Pick up where you left off, or find your next favourite."
+        />
 
         <section className="home-section">
           <h2 className="home-section__title">Continue Reading</h2>
