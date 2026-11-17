@@ -83,28 +83,36 @@ main {
   z-index: 10;
   height: var(--alto-pestanas);
   display: flex;
-  background: var(--color-superficie);
-  border-top: 1px solid var(--color-borde);
+  background: var(--color-fondo);
 }
 .pestanas a,
 .pestanas button {
   flex: 1;
   border: none;
   background: none;
-  font-family: inherit;
   cursor: pointer;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: 0.75rem;
-  color: var(--color-texto-suave);
+  color: var(--color-texto);          /* icono sin seleccionar: crema */
   text-decoration: none;
 }
-.pestanas a span,
-.pestanas button span { font-size: 1.3rem; }
-.pestanas a.activa,
-.pestanas button.activa { color: var(--color-primario); font-weight: 600; }
+
+/* Contenedor del icono: 30 × 30, SVG en el centro */
+.nav-icon {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+}
+.nav-icon svg { display: block; }
+
+/* Seleccionado: círculo naranja con el icono oscuro encima */
+.pestanas .activa .nav-icon {
+  background: var(--color-primario);
+  color: var(--color-sobre-primario);
+}
 
 /* 3. PATRONES */
 
