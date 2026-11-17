@@ -1,13 +1,13 @@
+
 /* ─────────────────────────────────────────────────────────────
-   ESTILOS DE LA REFERENCIA
-   1. Tokens: los valores de Inkverse Style Guide, como variables.
-   2. Esqueleto: cabecera, contenido y barra de pestañas.
-   3. Patrones: una clase por pieza (tarjeta, carrusel, chip…).
-   En React se copia este fichero tal cual a src/index.css
-   y se usan las mismas clases con className="…".
+   INKVERSE — GLOBAL STYLES
    ───────────────────────────────────────────────────────────── */
 
-/* 1. TOKENS (los de Inkverse Style Guide) */
+
+/* =============================================================
+   1. TOKENS
+============================================================= */
+
 :root {
   --color-primario: #FF7A24;
   --color-sobre-primario: #111111;
@@ -21,346 +21,1272 @@
 
   --fuente: 'Google Sans Flex', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --fuente-titulos: 'DM Serif Display', Georgia, serif;
+
   --radio: 8px;
+
   --espacio-1: 4px;
   --espacio-2: 8px;
   --espacio-3: 12px;
   --espacio-4: 16px;
   --espacio-5: 24px;
+
   --alto-pestanas: 76px;
 }
 
-* { box-sizing: border-box; }
+
+/* =============================================================
+   2. RESET & GENERAL
+============================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  background: var(--color-fondo);
+}
 
 body {
   margin: 0;
+  min-width: 320px;
   font-family: var(--fuente);
   background: var(--color-fondo);
   color: var(--color-texto);
   line-height: 1.45;
 }
 
-h1, h2, h3 { margin: 0; line-height: 1.2; }
-h2 { font-size: 1.1rem; margin-bottom: var(--espacio-3); }
-h3 { font-size: 1rem; }
-p { margin: 0; }
-img { max-width: 100%; display: block; }
+h1,
+h2,
+h3 {
+  margin: 0;
+  line-height: 1.2;
+}
 
-/* 2. ESQUELETO */
+h1 {
+  font-family: var(--fuente-titulos);
+  font-weight: 400;
+}
 
-/* Cabecera: se queda arriba al hacer scroll (sticky) */
+h2 {
+  font-size: 1.1rem;
+  margin-bottom: var(--espacio-3);
+}
+
+h3 {
+  font-size: 1rem;
+}
+
+p {
+  margin: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font-family: inherit;
+}
+
+
+/* =============================================================
+   3. APP STRUCTURE
+============================================================= */
+
+/* Cabecera general */
+
 .cabecera {
   position: sticky;
   top: 0;
   z-index: 10;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--espacio-3);
+
   padding: var(--espacio-4);
-  /* en pantallas anchas, alineada con el contenido (máximo 720 px, centrado) */
-  padding-inline: max(var(--espacio-4), calc((100% - 720px) / 2 + var(--espacio-4)));
+  padding-inline: max(
+    var(--espacio-4),
+    calc((100% - 720px) / 2 + var(--espacio-4))
+  );
+
   background: var(--color-fondo);
   border-bottom: 1px solid var(--color-borde);
 }
-.cabecera h1 { font-size: 1.4rem; }
 
-/* El contenido: el scroll vertical lo hace el navegador solo.
-   El padding de abajo evita que la barra fija tape lo último. */
-main {
-  padding: var(--espacio-4);
-  padding-bottom: calc(var(--alto-pestanas) + var(--espacio-5));
-  max-width: 720px;
-  margin: 0 auto;
+.cabecera h1 {
+  font-size: 1.4rem;
 }
 
-/* Barra de pestañas: siempre abajo (fixed) */
+
+/* Contenido principal */
+
+main {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: var(--espacio-4);
+  padding-bottom: calc(var(--alto-pestanas) + var(--espacio-5));
+}
+
+
+/* Navegación inferior */
+
 .pestanas {
   position: fixed;
   left: 0;
   right: 0;
   bottom: 0;
   z-index: 10;
-  height: var(--alto-pestanas);
+
   display: flex;
-  background: var(--color-superficie);
-  border-top: 1px solid var(--color-borde);
+  height: var(--alto-pestanas);
+
+  background: var(--color-fondo);
 }
+
 .pestanas a,
 .pestanas button {
-  flex: 1;
-  border: none;
-  background: none;
-  font-family: inherit;
-  cursor: pointer;
   display: flex;
-  flex-direction: column;
+  flex: 1;
   align-items: center;
   justify-content: center;
-  font-size: 0.75rem;
-  color: var(--color-texto-suave);
+
+  border: none;
+  background: none;
+  color: var(--color-texto);
+
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-texto); /* icono sin seleccionar: crema */
   text-decoration: none;
 }
-.pestanas a span,
-.pestanas button span { font-size: 1.3rem; }
-.pestanas a.activa,
-.pestanas button.activa { color: var(--color-primario); font-weight: 600; }
 
-/* 3. PATRONES */
 
-/* Colocar sin pensar: en columna o en fila, con hueco entre elementos */
-.stack { display: flex; flex-direction: column; gap: var(--espacio-4); }
-.row { display: flex; align-items: center; gap: var(--espacio-2); flex-wrap: wrap; }
-.seccion { margin-bottom: var(--espacio-5); }
+/* Iconos de navegación */
 
-/* Tarjeta */
+.nav-icon {
+  display: grid;
+  place-items: center;
+
+  width: 30px;
+  height: 30px;
+
+  border-radius: 50%;
+}
+
+.nav-icon svg {
+  display: block;
+  fill: none;
+  stroke: currentColor;
+}
+
+/* Inactivo: solo contorno */
+.nav-icon svg [fill]:not([fill="none"]) {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 0.95;
+}
+
+.nav-icon svg [stroke]:not([stroke="none"]) {
+  stroke: currentColor;
+}
+
+.nav-icon svg [stroke] {
+  stroke-width: 0.95;
+}
+
+.pestanas .activa .nav-icon {
+  background: var(--color-primario);
+  color: var(--color-sobre-primario);
+}
+
+.pestanas .activa .nav-icon svg {
+  fill: currentColor;
+  stroke: none;
+}
+
+.pestanas .activa .nav-icon svg [fill]:not([fill="none"]) {
+  fill: currentColor;
+  stroke: none;
+}
+
+.pestanas .activa .nav-icon svg [stroke] {
+  stroke-width: 1.5;
+}
+
+
+/* =============================================================
+   4. REUSABLE LAYOUT PATTERNS
+============================================================= */
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-4);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--espacio-2);
+}
+
+.seccion {
+  margin-bottom: var(--espacio-5);
+}
+
+
+/* =============================================================
+   5. CARDS
+============================================================= */
+
 .card {
+  display: block;
+  overflow: hidden;
+
   background: var(--color-superficie);
   border: 1px solid var(--color-borde);
   border-radius: var(--radio);
-  overflow: hidden;
+
   color: inherit;
   text-decoration: none;
-  display: block;
 }
-.card-cuerpo { padding: var(--espacio-3); display: flex; flex-direction: column; gap: var(--espacio-1); }
-.card-meta { font-size: 0.85rem; color: var(--color-texto-suave); }
-.card-cuerpo .tag { align-self: flex-start; }
 
-/* Portada de color (cuando no hay imagen) */
+.card-cuerpo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-1);
+  padding: var(--espacio-3);
+}
+
+.card-meta {
+  color: var(--color-texto-suave);
+  font-size: 0.85rem;
+}
+
+.card-cuerpo .tag {
+  align-self: flex-start;
+}
+
+
+/* Portadas genéricas */
+
 .portada {
-  aspect-ratio: 16 / 9;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2.2rem;
+
+  aspect-ratio: 16 / 9;
+
   color: #FFFFFF;
+  font-size: 2.2rem;
 }
 
-/* Rejilla de tarjetas: tantas columnas como quepan */
+
+/* Rejilla de tarjetas */
+
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: var(--espacio-3);
 }
 
-/* Carrusel: una fila que se desliza de lado */
+
+/* Carrusel */
+
 .carrusel {
   display: flex;
   gap: var(--espacio-3);
-  overflow-x: auto;                /* si no caben, scroll horizontal */
-  scroll-snap-type: x mandatory;   /* al soltar, encaja en una tarjeta */
+
+  overflow-x: auto;
   padding-bottom: var(--espacio-2);
+
+  scroll-snap-type: x mandatory;
 }
+
 .carrusel > * {
-  flex: 0 0 min(70%, 260px);       /* se ve asomar la siguiente; en pantallas anchas, como mucho 260 px */
+  flex: 0 0 min(70%, 260px);
   scroll-snap-align: start;
 }
 
-/* Lista */
-.list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--espacio-2); }
+
+/* Listas */
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-2);
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
 .list li {
   display: flex;
   align-items: center;
   gap: var(--espacio-3);
+
   padding: var(--espacio-3);
+
   background: var(--color-superficie);
   border: 1px solid var(--color-borde);
   border-radius: var(--radio);
 }
-.list li .crece { flex: 1; min-width: 0; }
 
-/* Avatar: un círculo con una letra */
+.list li .crece {
+  flex: 1;
+  min-width: 0;
+}
+
+
+/* =============================================================
+   6. AVATARS & TAGS
+============================================================= */
+
 .avatar {
-  width: 44px;
-  height: 44px;
-  flex: none;
-  border-radius: 50%;
   display: flex;
+  flex: none;
   align-items: center;
   justify-content: center;
+
+  width: 44px;
+  height: 44px;
+
+  border-radius: 50%;
+
   color: #FFFFFF;
   font-weight: 700;
 }
 
-/* Etiqueta */
 .tag {
   display: inline-block;
+
   padding: 2px 10px;
   border-radius: 999px;
-  font-size: 0.75rem;
-  font-weight: 600;
+
   background: var(--color-borde);
   color: var(--color-texto);
-}
-.tag-rapida { background: #DCEFE6; color: #1E5A45; }
-.tag-media { background: #FBEBCF; color: #7A4E0C; }
-.tag-larga { background: #F3DADA; color: #7E2626; }
-.tag-sprint { background: var(--color-texto); color: var(--color-fondo); }
 
-/* Botones */
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.tag-rapida {
+  background: #DCEFE6;
+  color: #1E5A45;
+}
+
+.tag-media {
+  background: #FBEBCF;
+  color: #7A4E0C;
+}
+
+.tag-larga {
+  background: #F3DADA;
+  color: #7E2626;
+}
+
+.tag-sprint {
+  background: var(--color-texto);
+  color: var(--color-fondo);
+}
+
+
+/* =============================================================
+   7. BUTTONS
+============================================================= */
+
 .btn {
+  padding: 10px 18px;
+
   border: none;
   border-radius: 999px;
-  padding: 10px 18px;
-  font: inherit;
-  font-weight: 600;
-  cursor: pointer;
+
   background: var(--color-primario);
   color: var(--color-sobre-primario);
-}
-.btn-secundario { background: transparent; color: var(--color-primario); border: 1px solid var(--color-primario); }
-.btn-peligro { background: var(--color-peligro); }
-.btn-icono {
-  border: none;
-  background: transparent;
-  font-size: 1.4rem;
+
+  font: inherit;
+  font-weight: 600;
+
   cursor: pointer;
-  padding: var(--espacio-1);
 }
 
+.btn-secundario {
+  border: 1px solid var(--color-primario);
+  background: transparent;
+  color: var(--color-primario);
+}
+
+.btn-peligro {
+  background: var(--color-peligro);
+}
+
+.btn-icono {
+  padding: var(--espacio-1);
+
+  border: none;
+  background: transparent;
+
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+
 /* Botón flotante */
+
 .fab {
   position: fixed;
   right: var(--espacio-4);
   bottom: calc(var(--alto-pestanas) + var(--espacio-4));
+
   width: 56px;
   height: 56px;
-  border-radius: 16px;
+
   border: none;
-  font-size: 1.6rem;
+  border-radius: 16px;
+
   background: var(--color-primario);
   color: var(--color-sobre-primario);
+
+  font-size: 1.6rem;
   cursor: pointer;
+
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* Chips (filtros de una opción) */
-.chips { display: flex; gap: var(--espacio-2); overflow-x: auto; padding-bottom: var(--espacio-1); }
+
+/* =============================================================
+   8. CHIPS & FILTERS
+============================================================= */
+
+.chips {
+  display: flex;
+  gap: var(--espacio-2);
+
+  overflow-x: auto;
+  padding-bottom: var(--espacio-1);
+}
+
 .chip {
   flex: none;
+
+  padding: 6px 14px;
+
   border: 1px solid var(--color-borde);
+  border-radius: 999px;
+
   background: var(--color-superficie);
   color: var(--color-texto);
-  border-radius: 999px;
-  padding: 6px 14px;
+
   font: inherit;
   cursor: pointer;
 }
-.chip.activo { background: var(--color-primario); border-color: var(--color-primario); color: var(--color-sobre-primario); }
 
-/* Campos de formulario */
-.field { display: flex; flex-direction: column; gap: var(--espacio-1); font-size: 0.9rem; }
+.chip.activo {
+  border-color: var(--color-primario);
+  background: var(--color-primario);
+  color: var(--color-sobre-primario);
+}
+
+
+/* =============================================================
+   9. FORMS
+============================================================= */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-1);
+
+  font-size: 0.9rem;
+}
+
 .field input,
 .field select,
 .field textarea,
 .buscador {
-  font: inherit;
+  width: 100%;
   padding: 10px 12px;
+
   border: 1px solid var(--color-borde);
   border-radius: var(--radio);
+
   background: var(--color-superficie);
   color: var(--color-texto);
-  width: 100%;
+
+  font: inherit;
 }
 
-/* Estrellas (las que se pulsan son botones) */
-.estrellas { color: var(--color-acento); letter-spacing: 2px; }
-.estrellas button { border: none; background: none; font-size: 1.6rem; color: var(--color-acento); cursor: pointer; padding: 0 2px; }
+.field textarea {
+  min-height: 90px;
+  resize: vertical;
+}
 
-/* Selector de cantidad − / + */
-.cantidad { display: flex; align-items: center; gap: var(--espacio-3); }
-.cantidad button { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--color-borde); background: var(--color-superficie); font-size: 1.2rem; cursor: pointer; }
-.cantidad output { min-width: 2ch; text-align: center; font-weight: 700; }
+.formulario {
+  padding: var(--espacio-4);
+
+  background: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+}
+
+
+/* =============================================================
+   10. OTHER REUSABLE COMPONENTS
+============================================================= */
+
+/* Estrellas */
+
+.estrellas {
+  color: var(--color-acento);
+  letter-spacing: 2px;
+}
+
+.estrellas button {
+  padding: 0 2px;
+
+  border: none;
+  background: none;
+
+  color: var(--color-acento);
+  font-size: 1.6rem;
+
+  cursor: pointer;
+}
+
+
+/* Selector de cantidad */
+
+.cantidad {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-3);
+}
+
+.cantidad button {
+  width: 40px;
+  height: 40px;
+
+  border: 1px solid var(--color-borde);
+  border-radius: 50%;
+
+  background: var(--color-superficie);
+  font-size: 1.2rem;
+
+  cursor: pointer;
+}
+
+.cantidad output {
+  min-width: 2ch;
+  text-align: center;
+  font-weight: 700;
+}
+
+.cantidad span {
+  min-width: 7ch;
+}
+
 
 /* Estado vacío */
-.vacio { text-align: center; color: var(--color-texto-suave); padding: var(--espacio-5) var(--espacio-4); }
-.vacio .icono { font-size: 2.5rem; }
 
-/* Fondo oscuro detrás de un panel o una ventana */
-.fondo { position: fixed; inset: 0; z-index: 20; background: rgba(0, 0, 0, 0.4); }
+.vacio {
+  padding: var(--espacio-5) var(--espacio-4);
 
-/* Panel inferior */
+  color: var(--color-texto-suave);
+  text-align: center;
+}
+
+.vacio .icono {
+  font-size: 2.5rem;
+}
+
+
+/* Fondos y paneles */
+
+.fondo {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+
+  background: rgba(0, 0, 0, 0.4);
+}
+
 .panel {
   position: fixed;
   left: 0;
   right: 0;
   bottom: 0;
   z-index: 21;
+
   max-height: 80vh;
-  overflow-y: auto;                /* si el contenido es largo, se desliza dentro */
+  overflow-y: auto;
+
+  padding: var(--espacio-5) var(--espacio-4);
+
   background: var(--color-superficie);
   border-radius: 16px 16px 0 0;
-  padding: var(--espacio-5) var(--espacio-4);
 }
 
-/* Ventana centrada */
 .modal {
   position: fixed;
-  z-index: 21;
-  left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  left: 50%;
+  z-index: 21;
+
   width: min(90vw, 360px);
+  padding: var(--espacio-5);
+
+  transform: translate(-50%, -50%);
+
   background: var(--color-superficie);
   border-radius: var(--radio);
-  padding: var(--espacio-5);
 }
 
-/* Aviso breve abajo */
 .aviso {
   position: fixed;
-  z-index: 30;
   left: 50%;
-  transform: translateX(-50%);
   bottom: calc(var(--alto-pestanas) + var(--espacio-4));
+  z-index: 30;
+
+  padding: 10px 18px;
+
+  transform: translateX(-50%);
+
   background: var(--color-texto);
   color: #FFFFFF;
-  padding: 10px 18px;
   border-radius: var(--radio);
+
   font-size: 0.9rem;
 }
 
-/* Para lectores de pantalla: oculto a la vista */
-.oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 
-/* Pequeños ajustes */
-.enlace-fila { color: inherit; text-decoration: none; }
-.enlace-btn { text-decoration: none; display: inline-block; }
-.centrado { text-align: center; }
-.cantidad span { min-width: 7ch; }
+/* Accesibilidad */
 
-/* Títulos con la tipografía de títulos del Style Guide */
-h1 { font-family: var(--fuente-titulos); font-weight: 400; }
+.oculto {
+  position: absolute;
 
-/* Tarjeta destacada (más grande, con el texto encima del color) */
-.destacada { display: block; color: #FFFFFF; text-decoration: none; border-radius: var(--radio); padding: var(--espacio-5) var(--espacio-4); }
-.destacada p { opacity: 0.9; }
+  width: 1px;
+  height: 1px;
 
-/* Un bloque con fondo de tarjeta (formularios, resúmenes) */
-.formulario { background: var(--color-superficie); border: 1px solid var(--color-borde); border-radius: var(--radio); padding: var(--espacio-4); }
-.field textarea { min-height: 90px; resize: vertical; }
-.btn:disabled { opacity: 0.45; cursor: not-allowed; }
-.btn-secundario { background: transparent; }
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
 
-/* Tabla sencilla (comparativas, rankings) */
-.tabla { width: 100%; border-collapse: collapse; background: var(--color-superficie); border-radius: var(--radio); overflow: hidden; }
-.tabla th, .tabla td { text-align: left; padding: var(--espacio-2) var(--espacio-3); border-bottom: 1px solid var(--color-borde); }
-.tabla th { font-size: 0.8rem; color: var(--color-texto-suave); }
 
-/* ── ALCANCE POR SPRINT ── (solo de la referencia: en vuestra app no hace falta) */
-.tag-s1 { background: #DCEFE6; color: #1E5A45; }
-.tag-s2 { background: #E6E0FA; color: #4A3A9A; }
-.tag-s3 { background: #FBE3CC; color: #8A4A10; }
-.tag-s0 { background: var(--color-texto); color: var(--color-fondo); }
-.cabecera a.tag { text-decoration: none; }
-.franja-sprint { margin: calc(-1 * var(--espacio-4)) calc(-1 * var(--espacio-4)) var(--espacio-4); padding: var(--espacio-2) var(--espacio-4); font-size: 0.85rem; }
-.franja-sprint a { color: inherit; font-weight: 600; }
-.franja-s1 { background: #DCEFE6; color: #1E5A45; }
-.franja-s2 { background: #E6E0FA; color: #4A3A9A; }
-.franja-s3 { background: #FBE3CC; color: #8A4A10; }
-.alcance-sprint { border-left: 6px solid; padding: var(--espacio-3) var(--espacio-4); background: var(--color-superficie); border-radius: var(--radio); }
-.alcance-sprint ul { margin: var(--espacio-2) 0 0; padding-left: 20px; }
-.alcance-s1 { border-color: #2E8F66; }
-.alcance-s2 { border-color: #6D5BD0; }
-.alcance-s3 { border-color: #C4791F; }
+/* Utilidades */
+
+.enlace-fila {
+  color: inherit;
+  text-decoration: none;
+}
+
+.enlace-btn {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.centrado {
+  text-align: center;
+}
+
+.destacada {
+  display: block;
+
+  padding: var(--espacio-5) var(--espacio-4);
+
+  border-radius: var(--radio);
+
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+.destacada p {
+  opacity: 0.9;
+}
+
+
+/* Tablas */
+
+.tabla {
+  width: 100%;
+  overflow: hidden;
+
+  border-collapse: collapse;
+  border-radius: var(--radio);
+
+  background: var(--color-superficie);
+}
+
+.tabla th,
+.tabla td {
+  padding: var(--espacio-2) var(--espacio-3);
+
+  border-bottom: 1px solid var(--color-borde);
+
+  text-align: left;
+}
+
+.tabla th {
+  color: var(--color-texto-suave);
+  font-size: 0.8rem;
+}
+
+
+/* =============================================================
+   11. SPRINT TAGS
+============================================================= */
+
+.tag-s1 {
+  background: #DCEFE6;
+  color: #1E5A45;
+}
+
+.tag-s2 {
+  background: #E6E0FA;
+  color: #4A3A9A;
+}
+
+.tag-s3 {
+  background: #FBE3CC;
+  color: #8A4A10;
+}
+
+.tag-s0 {
+  background: var(--color-texto);
+  color: var(--color-fondo);
+}
+
+.cabecera a.tag {
+  text-decoration: none;
+}
+
+.franja-sprint {
+  margin: calc(-1 * var(--espacio-4)) calc(-1 * var(--espacio-4)) var(--espacio-4);
+  padding: var(--espacio-2) var(--espacio-4);
+  font-size: 0.85rem;
+}
+
+.franja-sprint a {
+  color: inherit;
+  font-weight: 600;
+}
+
+.franja-s1 {
+  background: #DCEFE6;
+  color: #1E5A45;
+}
+
+.franja-s2 {
+  background: #E6E0FA;
+  color: #4A3A9A;
+}
+
+.franja-s3 {
+  background: #FBE3CC;
+  color: #8A4A10;
+}
+
+.alcance-sprint {
+  padding: var(--espacio-3) var(--espacio-4);
+
+  background: var(--color-superficie);
+  border-left: 6px solid;
+  border-radius: var(--radio);
+}
+
+.alcance-sprint ul {
+  margin: var(--espacio-2) 0 0;
+  padding-left: 20px;
+}
+
+.alcance-s1 {
+  border-color: #2E8F66;
+}
+
+.alcance-s2 {
+  border-color: #6D5BD0;
+}
+
+.alcance-s3 {
+  border-color: #C4791F;
+}
+
+
+/* =============================================================
+   12. HOME — GENERAL
+============================================================= */
+
+.home {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.home__header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 44px;
+  padding: 0 16px;
+}
+
+.home__content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  width: 100%;
+  padding: 16px 24px 32px;
+}
+
+
+/* Logo */
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  padding: 0 16px;
+
+  overflow: hidden;
+}
+
+.logo {
+  display: block;
+
+  width: 120px;
+  height: 40px;
+
+  aspect-ratio: 3 / 1;
+  object-fit: contain;
+}
+
+
+/* =============================================================
+   13. HOME — HERO
+============================================================= */
+
+.home-hero {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  width: 100%;
+  padding: 8px;
+
+  background: #27122F;
+  border: 1px solid #52205F;
+  border-radius: 8px;
+}
+
+.home-hero h1,
+.home-hero__title {
+  margin: 0;
+
+  color: var(--color-texto);
+  font-family: var(--fuente);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.home-hero p,
+.home-hero__description {
+  margin: 0;
+
+  color: var(--color-texto-suave);
+  font-family: var(--fuente);
+  font-size: 12px;
+  font-weight: 400;
+}
+
+
+/* =============================================================
+   14. HOME — SECTIONS
+============================================================= */
+
+.home-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  width: 100%;
+}
+
+.home-section__title {
+  margin: 0;
+
+  color: var(--color-primario);
+  font-family: var(--fuente);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.2;
+
+  text-transform: uppercase;
+}
+
+
+/* =============================================================
+   15. HOME — CONTINUE READING
+============================================================= */
+
+.home-section__list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.continue-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  width: 100%;
+  min-height: 70px;
+  padding: 8px;
+
+  overflow: hidden;
+}
+
+.continue-item__thumbnail {
+  flex: 0 0 40px;
+
+  width: 40px;
+  height: 54px;
+
+  background: linear-gradient(135deg, #52205F 0%, #27122F 100%);
+  border: 1px solid #444444;
+  border-radius: 4px;
+}
+
+.continue-item__content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 2px;
+
+  min-width: 0;
+  overflow: hidden;
+}
+
+.continue-item__content h3 {
+  margin: 0;
+
+  overflow: hidden;
+
+  color: var(--color-texto);
+  font-family: var(--fuente);
+  font-size: 14px;
+  font-weight: 600;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.continue-item__content p {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+
+  margin: 0;
+
+  color: var(--color-texto-suave);
+  font-family: var(--fuente);
+  font-size: 12px;
+}
+
+.continue-item__chevron {
+  flex: 0 0 auto;
+  color: var(--color-texto-suave);
+  font-size: 24px;
+}
+
+
+/* =============================================================
+   16. HOME — UNIVERSE CARDS
+============================================================= */
+
+.universe-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  width: 100%;
+  min-height: 70px;
+  padding: 8px;
+
+  overflow: hidden;
+
+  border: none;
+  background: transparent;
+  color: var(--color-texto);
+
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
+}
+
+.card__thumbnail {
+  flex: 0 0 40px;
+
+  width: 40px;
+  height: 54px;
+
+  border: 1px solid #444444;
+  border-radius: 4px;
+
+  background: linear-gradient(135deg, #52205F 0%, #27122F 100%);
+  background-size: cover;
+  background-position: center;
+}
+
+.btn-secundario {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+
+  min-width: 0;
+  overflow: hidden;
+}
+
+.card__title {
+  align-self: stretch;
+
+  margin: 0;
+  overflow: hidden;
+
+  color: var(--color-texto);
+  font-family: var(--fuente);
+  font-size: 14px;
+  font-weight: 600;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.card__metadata {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  color: var(--color-texto-suave);
+  font-family: var(--fuente);
+  font-size: 12px;
+  font-weight: 400;
+
+  white-space: nowrap;
+}
+
+.card__chevron {
+  flex: 0 0 16px;
+
+  width: 16px;
+  height: 16px;
+
+  color: var(--color-texto-suave);
+  stroke-width: 1.25;
+}
+
+
+/* =============================================================
+   17. HOME — REVIEWS
+============================================================= */
+
+.reviews-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  width: 100%;
+}
+
+.review-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  width: 100%;
+  padding: 10px;
+
+  background: #27122F;
+  border-radius: 8px;
+}
+
+.review-card__header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  min-width: 0;
+}
+
+.review-card__avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.review-card__username {
+  min-width: 0;
+  overflow: hidden;
+
+  color: var(--color-texto-suave);
+  font-family: var(--fuente);
+  font-size: 14px;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.review-card__rating {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.review-card__star {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+}
+
+/* Estrellas rellenadas: amarillo */
+.review-card__star--filled {
+  color: #F4B83F;
+}
+
+/* Estrellas vacías: color suave */
+.review-card__star--empty {
+  color: var(--color-texto-suave);
+}
+
+.spoiler-box__icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.review-card__text {
+  margin: 0;
+
+  color: var(--color-texto);
+  font-family: var(--fuente);
+  font-size: 12px;
+  line-height: 16px;
+}
+
+
+/* =============================================================
+   18. HOME — SPOILER WARNING
+============================================================= */
+
+.spoiler-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+
+  width: 100%;
+  padding: 10px;
+
+  background: #DD6E2D;
+  border-radius: 8px;
+}
+
+.spoiler-box__heading {
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  gap: 6px;
+
+  padding: 8px 0;
+
+  color: var(--color-texto);
+  font-family: var(--fuente);
+  font-size: 12px;
+}
+
+.spoiler-box__content {
+  align-self: stretch;
+
+  margin: 0;
+
+  color: var(--color-fondo);
+  font-family: var(--fuente);
+  font-size: 12px;
+  line-height: 16px;
+
+  filter: blur(6px);
+}
+
+.spoiler-box__content.is-revealed {
+  filter: none;
+}
+
+.spoiler-box__button {
+  padding: 4px 10px;
+
+  border: none;
+  border-radius: 999px;
+
+  background: #F4B83F;
+  color: #3E2046;
+
+  font-family: var(--fuente);
+  font-size: 10px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+
+/* =============================================================
+   19. RESPONSIVE
+============================================================= */
+
+@media (max-width: 480px) {
+  .home__content {
+    padding-inline: 24px;
+  }
+}
+
+@media (min-width: 721px) {
+  .home {
+    min-height: auto;
+  }
+}
