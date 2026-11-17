@@ -1,6 +1,5 @@
-
 import { useState } from 'react'
-import Home from './pages/Home'
+import Home from './pages/home'
 import BottomNavigation from './components/reusable-components/navigation/BottomNavigation'
 
 function App() {
