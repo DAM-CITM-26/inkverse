@@ -1139,14 +1139,11 @@ main {
 }
 
 .review-card__avatar {
-  flex: 0 0 26px;
-
   width: 26px;
   height: 26px;
-
-  background: #919191;
-  border: 1px solid #4D4D4D;
   border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
 }
 
 .review-card__username {
@@ -1163,18 +1160,33 @@ main {
 
 .review-card__rating {
   display: flex;
-  flex: 0 0 auto;
   align-items: center;
-
+  gap: 2px;
   margin-left: auto;
-
-  color: #F4B83F;
-  font-size: 14px;
-  letter-spacing: 1px;
+  flex-shrink: 0;
 }
 
-.review-card__rating span {
+.review-card__star {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+}
+
+/* Estrellas rellenadas: amarillo */
+.review-card__star--filled {
+  color: #F4B83F;
+}
+
+/* Estrellas vacías: color suave */
+.review-card__star--empty {
   color: var(--color-texto-suave);
+}
+
+.spoiler-box__icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
 .review-card__text {

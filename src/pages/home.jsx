@@ -1,8 +1,7 @@
-
-import { useState } from 'react'
 import UniverseCard from '../components/molecules/UniverseCard'
 import Logo from '../components/atoms/Logo'
 import HomeHero from '../components/molecules/HomeHero'
+import ReviewCard from '../components/molecules/ReviewCard'
 
 function ContinueReadingItem({ title, progress }) {
   return (
@@ -22,46 +21,6 @@ function ContinueReadingItem({ title, progress }) {
 
       <span className="continue-item__chevron">›</span>
     </div>
-  )
-}
-
-function ReviewCard({ username, rating, text, spoiler = false, spoilerText = '' }) {
-  const [revealed, setRevealed] = useState(false)
-
-  return (
-    <article className="review-card">
-      <div className="review-card__header">
-        <div className="review-card__avatar" />
-        <span className="review-card__username">{username}</span>
-        <span className="review-card__rating">
-          {'★'.repeat(rating)}
-          <span>{'☆'.repeat(5 - rating)}</span>
-        </span>
-      </div>
-
-      <p className="review-card__text">{text}</p>
-
-      {spoiler && (
-        <div className="spoiler-box">
-          <div className="spoiler-box__heading">
-            <span>ⓘ</span>
-            <strong>This review may contain spoilers.</strong>
-          </div>
-
-          <p className={revealed ? 'spoiler-box__content is-revealed' : 'spoiler-box__content'}>
-            {spoilerText}
-          </p>
-
-          <button
-            className="spoiler-box__button"
-            type="button"
-            onClick={() => setRevealed(!revealed)}
-          >
-            {revealed ? 'Hide review' : 'Reveal review'}
-          </button>
-        </div>
-      )}
-    </article>
   )
 }
 
@@ -125,9 +84,10 @@ function Home() {
             />
 
             <ReviewCard
-              username="Mia"
+              username="miaaaa123"
               rating={3}
               text="Dune makes its world feel vast, strange and alive."
+              userImage="/images/mia-pfp.jpg"
             />
 
             <ReviewCard
