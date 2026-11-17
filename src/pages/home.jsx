@@ -30,6 +30,7 @@ function ContinueReadingItem({ title, progress }) {
  * Componente que muestra una sección de Home
  * a partir de un título y una lista de elementos.
  *
+ * 
  * Props:
  * - title: título de la sección.
  * - data: elementos que se deben mostrar.
