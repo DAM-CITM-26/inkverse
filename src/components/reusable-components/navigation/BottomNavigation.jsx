@@ -8,10 +8,6 @@ import UniverseIcon from '../../../assets/icons/universe-icon.svg?react';
 /**
  * Los cinco destinos de la app (en la barra solo se ven los iconos). Son siempre los mismos en todas las páginas;
  * solo cambia cuál está seleccionado.
- *
- * Sustituye los emojis de `icon` por vuestros SVG, por ejemplo:
- *   import HomeIcon from '../assets/icons/home.svg?react';  (con vite-plugin-svgr)
- *   { id: 'home', label: 'Inicio', icon: <HomeIcon /> }
  */
 const DESTINATIONS = [
   { id: 'home', label: 'Inicio', icon: <HomeIcon /> },
