@@ -1,5 +1,14 @@
 # Modelo de datos
 
+La aplicación trabaja con **datos de ejemplo (dummy)** escritos en `src/data/`, sin API ni servidor. Hay cuatro conjuntos de datos, uno por fichero, y todos salen de `js/datos.js` de la referencia.
+
+| Conjunto    | Fichero                | Qué contiene |
+|-------------|------------------------|--------------|
+| `UNIVERSOS` | `src/data/universos.js` | Sagas o mundos que agrupan varias obras |
+| `OBRAS`     | `src/data/obras.js`    | Libros, películas y series |
+| `CONTINUAR` | `src/data/continuar.js` | Obras empezadas y su progreso |
+| `RESENAS`   | `src/data/resenas.js`  | Opiniones de usuarios sobre las obras |
+
 ## UNIVERSOS
 
 **Fichero:** `src/data/universos.js` · **Qué representa:** una saga o mundo (Harry Potter, Dune…) que reúne sus libros, películas y series.
@@ -54,5 +63,25 @@ Propiedad | Tipo   | Ejemplo | Qué es |
 ```js
 { obraId: 2, progreso: 60 }
 ```
+
+**Lo usan:** _COMPLETAR._
+
+## RESENAS
+
+**Fichero:** `src/data/resenas.js` · **Qué representa:** una opinión de un usuario sobre una obra.
+
+| Propiedad | Tipo | Ejemplo | Qué es |
+|-----------|------|---------|--------|
+| `obraId` | número | `5` | Obra reseñada (`OBRAS.id`) |
+| `autor` | texto | `"panem_fan"` | Nombre de usuario de quien escribe |
+| `texto` | texto | `"La fotografía es preciosa…"` | Contenido de la reseña |
+| `spoiler` | booleano | `true` | `true` si la reseña destripa la obra y hay que avisar |
+
+**Ejemplo:**
+```js
+{ obraId: 5, autor: "panem_fan", texto: "La fotografía es preciosa y la banda sonora acompaña muy bien.", spoiler: false }
+```
+
+Las reseñas no tienen `id`. Para la `key` se puede combinar `obraId` y `autor`.
 
 **Lo usan:** _COMPLETAR._
