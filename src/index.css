@@ -19,8 +19,8 @@
   --color-borde: #B38AFF;
   --color-peligro: #F47769;
 
-  --fuente: 'Google Sans Flex', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --fuente-titulos: var(--fuente);
+  --fuente: 'Google Sans Flex', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --fuente-titulos: 'DM Serif Display', Georgia, serif;
   --radio: 8px;
   --espacio-1: 4px;
   --espacio-2: 8px;
@@ -331,7 +331,7 @@ main {
 .cantidad span { min-width: 7ch; }
 
 /* Títulos con la tipografía de títulos del Style Guide */
-h1, h2, h3 { font-family: var(--fuente-titulos); }
+h1 { font-family: var(--fuente-titulos); font-weight: 400; }
 
 /* Tarjeta destacada (más grande, con el texto encima del color) */
 .destacada { display: block; color: #FFFFFF; text-decoration: none; border-radius: var(--radio); padding: var(--espacio-5) var(--espacio-4); }
