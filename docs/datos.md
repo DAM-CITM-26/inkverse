@@ -40,3 +40,19 @@ Propiedad | Tipo   | Ejemplo | Qué es |
 ```
 
 **Lo usan:** _COMPLETAR con los componentes de `docs/componentes.md` que reciben un universo por props._
+
+## PROGRESO
+
+**Fichero:** `src/data/progreso.js` · **Qué representa:** las obras que la persona tiene a medias.
+
+| Propiedad | Tipo | Ejemplo | Qué es |
+|-----------|------|---------|--------|
+| `obraId`  | número | `2` | Obra empezada (`OBRAS.id`). No se repite, así que sirve de `key` |
+| `progreso` | número | `60` | Porcentaje avanzado, de 0 a 100 |
+
+**Ejemplo:**
+```js
+{ obraId: 2, progreso: 60 }
+```
+
+**Lo usan:** _COMPLETAR._
