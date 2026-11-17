@@ -11,3 +11,7 @@ export function obtenerObrasEnCurso(continuar, obras){
     })
     .filter(obra => obra !== null);
 } /*La función junta los parámetros de dos listas: la del progreso de cada obra (continuar) y los datos de cada obra, para poder mostrar título de la obra y su progreso*/
+
+export function obtenerObrasPorUniverso(universo, obras){
+    return obras.filter(obra => obra.universoId === universo.id);
+} /*La función recibe un universo y la lista de obras, y devuelve solo las obras que pertenecen a ese universo*/
