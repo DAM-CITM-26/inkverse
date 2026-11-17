@@ -14,7 +14,7 @@ const DESTINATIONS = [
   { id: 'discovery', label: 'Explorar', icon: <DiscoveryIcon /> },
   { id: 'universes', label: 'Universos', icon: <UniverseIcon /> },
   { id: 'library', label: 'Biblioteca', icon: <LibraryIcon className="icon-fill" /> },
-  { id: 'profile', label: 'Perfil', icon: <ProfileIcon /> },
+  { id: 'profile', label: 'Perfil', icon: <ProfileIcon className="icon-fill" /> },
 ];
 
 /**

@@ -85,6 +85,7 @@ main {
   display: flex;
   background: var(--color-fondo);
 }
+
 .pestanas a,
 .pestanas button {
   flex: 1;
@@ -94,7 +95,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-texto);          /* icono sin seleccionar: crema */
+  color: var(--color-texto); /* icono sin seleccionar: crema */
   text-decoration: none;
 }
 
@@ -107,12 +108,26 @@ main {
   border-radius: 50%;
 }
 
-/* Forzar estilos al svg */
-.nav-icon svg [fill]:not([fill="none"]) { fill: currentColor; }
-.nav-icon svg [stroke]:not([stroke="none"]) { stroke: currentColor; }
-.nav-icon svg [stroke] { stroke-width: 0.95; }
+.nav-icon svg {
+  display: block;
+  fill: none;
+  stroke: currentColor;
+}
 
-.nav-icon svg { display: block; }
+/* Inactivo: solo contorno */
+.nav-icon svg [fill]:not([fill="none"]) {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 0.95;
+}
+
+.nav-icon svg [stroke]:not([stroke="none"]) {
+  stroke: currentColor;
+}
+
+.nav-icon svg [stroke] {
+  stroke-width: 0.95;
+}
 
 /* Seleccionado: círculo naranja con el icono oscuro encima */
 .pestanas .activa .nav-icon {
@@ -120,13 +135,18 @@ main {
   color: var(--color-sobre-primario);
 }
 
-.pestanas .activa .nav-icon svg [stroke]  {
-  stroke-width: 2;
+.pestanas .activa .nav-icon svg {
+  fill: currentColor;
+  stroke: none;
 }
 
-/* Biblioteca: se rellena al seleccionarla */
-.pestanas .activa .icon-fill path {
+.pestanas .activa .nav-icon svg [fill]:not([fill="none"]) {
   fill: currentColor;
+  stroke: none;
+}
+
+.pestanas .activa .nav-icon svg [stroke] {
+  stroke-width: 1.5;
 }
 
 /* 3. PATRONES */
