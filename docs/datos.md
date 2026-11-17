@@ -1,6 +1,6 @@
 # Modelo de datos
 
-La aplicación trabaja con **datos de ejemplo (dummy)** escritos en `src/data/`, sin API ni servidor. Hay cuatro conjuntos de datos, uno por fichero, y todos salen de `js/datos.js` de la referencia.
+La aplicación trabaja con datos de ejemplo (dummy) escritos en `src/data/`, sin API ni servidor. Hay cuatro conjuntos de datos, uno por fichero, y todos salen de `js/datos.js` de la referencia.
 
 | Conjunto    | Fichero                | Qué contiene |
 |-------------|------------------------|--------------|
