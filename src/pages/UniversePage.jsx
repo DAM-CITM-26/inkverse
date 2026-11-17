@@ -15,11 +15,12 @@ const works = [
 ]
 
 function UniversePage() {
-  const [format, setFormat] = useState('book')
+    const [format, setFormat] = useState('all')
 
-  const filteredWorks = works.filter(
-    (work) => work.format === format
-  )
+    const filteredWorks =
+    format === 'all'
+        ? works
+        : works.filter((work) => work.format === format)
 
   return (
     <main className="universe-page">
@@ -31,21 +32,28 @@ function UniversePage() {
 
       <section className="universe-content">
 
-        <div className="universe-filters">
-          <button
-            className={format === 'book' ? 'universe-chip active' : 'universe-chip'}
-            onClick={() => setFormat('book')}
-          >
-            5 books
-          </button>
+    <div className="universe-filters">
+    <button
+        className={format === 'all' ? 'universe-chip active' : 'universe-chip'}
+        onClick={() => setFormat('all')}
+    >
+        All
+    </button>
 
-          <button
-            className={format === 'movie' ? 'universe-chip active' : 'universe-chip'}
-            onClick={() => setFormat('movie')}
-          >
-            5 movies
-          </button>
-        </div>
+    <button
+        className={format === 'book' ? 'universe-chip active' : 'universe-chip'}
+        onClick={() => setFormat('book')}
+    >
+        5 books
+    </button>
+
+    <button
+        className={format === 'movie' ? 'universe-chip active' : 'universe-chip'}
+        onClick={() => setFormat('movie')}
+    >
+        5 movies
+    </button>
+    </div>
 
         <div className="universe-list">
           {filteredWorks.map((work, index) => (
