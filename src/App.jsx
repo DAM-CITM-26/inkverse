@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 import Home from './pages/home'
 import UniversePage from './pages/UniversePage'
-import BottomNavigation from './components/reusable-components/navigation/BottomNavigation'
+import BottomNavigation from './components/navigation/BottomNavigation'
 
 function App() {
   const [current, setCurrent] = useState('home')
