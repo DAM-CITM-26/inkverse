@@ -1,18 +1,7 @@
-import { useState } from 'react'
-import BottomNavigation from './components/reusable-components/navigation/BottomNavigation'
+import Home from './pages/Home'
 
 function App() {
-  const [current, setCurrent] = useState('home')
-
-  return (
-    <>
-      <main>
-        <h1>Inkverse</h1>
-      </main>
-
-      <BottomNavigation current={current} onNavigate={setCurrent} />
-    </>
-  )
+  return <Home />
 }
 
 export default App
