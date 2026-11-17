@@ -1,5 +1,9 @@
+
 import { useState } from 'react'
+
 import Home from './pages/home'
+import UniversePage from './pages/UniversePage'
+
 import BottomNavigation from './components/reusable-components/navigation/BottomNavigation'
 
 function App() {
@@ -7,8 +11,14 @@ function App() {
 
   return (
     <>
-      <Home />
-      <BottomNavigation current={current} onNavigate={setCurrent} />
+      {current === 'home' && <Home />}
+
+      {current === 'universes' && <UniversePage />}
+
+      <BottomNavigation
+        current={current}
+        onNavigate={setCurrent}
+      />
     </>
   )
 }
