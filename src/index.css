@@ -464,3 +464,20 @@ h1 { font-family: var(--fuente-titulos); font-weight: 400; }
   flex-direction: column;
   gap: 4px;
 }
+
+
+.logo {
+  position: relative;
+  width: 120px;
+  height: 40px;
+}
+
+.logo__shape {
+  position: absolute;
+  width: 114.37px;
+  height: 25.19px;
+  left: 5.63px;
+  top: 14.81px;
+  color: var(--color-texto);
+  background: var(--color-texto);
+}

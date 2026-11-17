@@ -1,10 +1,13 @@
 
 import UniverseCard from '../components/molecules/UniverseCard'
+import Logo from '../components/atoms/Logo'
 
 function Home() {
   return (
     <main className="home">
       <section className="seccion">
+        <Logo />
+
         <h2>Featured Universes</h2>
 
         <div className="universe-list">
