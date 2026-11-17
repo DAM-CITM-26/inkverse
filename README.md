@@ -1,16 +1,82 @@
-# React + Vite
+# Inkverse
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación web desarrollada con React como proyecto académico de la asignatura **Desarrollo de Aplicaciones Móviles (804480)** del CITM - UPC.
 
-Currently, two official plugins are available:
+Inkverse es una aplicación para explorar universos de ficción y descubrir información sobre diferentes obras y sus relaciones, teniendo en cuenta aspectos como la cronología, la fidelidad y los spoilers.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Equipo
 
-## React Compiler
+Proyecto desarrollado por:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Paula**
+- **Andrea**
+- **Ovi**
 
-## Expanding the ESLint configuration
+## Tecnologías
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React
+- JavaScript
+- CSS
+- Vite
+- Git y GitHub
+
+## Instalación y ejecución
+
+### Requisitos
+
+- Node.js
+- npm
+
+### 1. Clonar el repositorio
+
+```bash
+git clone https://github.com/DAM-CITM-26/inkverse.git
+```
+
+### 2. Acceder al proyecto
+
+```bash
+cd inkverse
+```
+
+### 3. Instalar las dependencias
+
+```bash
+npm install
+```
+
+### 4. Ejecutar el servidor de desarrollo
+
+```bash
+npm run dev
+```
+
+Vite mostrará en la terminal la dirección local para abrir la aplicación en el navegador.
+
+## Estructura del proyecto
+
+```text
+inkverse/
+├── public/
+├── docs/
+├── src/
+│   ├── assets/
+│   ├── components/
+│   ├── data/
+│   ├── pages/
+│   └── utils/
+├── index.html
+├── package.json
+└── README.md
+```
+
+## Enlaces
+
+- **Repositorio GitHub:** https://github.com/DAM-CITM-26/inkverse
+- **Aplicación de referencia:** https://dam-citm-26.github.io/referencias/inkverse/
+- **Tablero Trello:** https://trello.com/b/kIgLwLy5/inktoscreen
+
+## Desarrollo
+
+El proyecto se desarrolla de forma incremental mediante tres sprints. Se utiliza GitHub para gestionar ramas, commits y Pull Requests, y Trello para organizar y realizar el seguimiento de las tareas.
+
