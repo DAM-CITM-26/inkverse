@@ -1034,7 +1034,7 @@ main {
   gap: 4px;
 }
 
-.universe-card {
+.card {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -1054,7 +1054,7 @@ main {
   cursor: pointer;
 }
 
-.universe-card__thumbnail {
+.card__thumbnail {
   flex: 0 0 40px;
 
   width: 40px;
@@ -1068,7 +1068,7 @@ main {
   background-position: center;
 }
 
-.universe-card__content {
+.btn-secundario {
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -1079,7 +1079,7 @@ main {
   overflow: hidden;
 }
 
-.universe-card__title {
+.card__title {
   align-self: stretch;
 
   margin: 0;
@@ -1094,7 +1094,7 @@ main {
   text-overflow: ellipsis;
 }
 
-.universe-card__metadata {
+.card__metadata {
   display: flex;
   align-items: center;
   gap: 4px;
@@ -1107,7 +1107,7 @@ main {
   white-space: nowrap;
 }
 
-.universe-card__chevron {
+.card__chevron {
   flex: 0 0 16px;
 
   width: 16px;

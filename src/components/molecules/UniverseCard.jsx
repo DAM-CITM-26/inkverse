@@ -4,20 +4,20 @@ import { ChevronRight } from 'lucide-react'
 function UniverseCard({ title, worksCount, formatsCount, cover, onClick }) {
   return (
     <button
-      className="universe-card"
+      className="card"
       type="button"
       onClick={onClick}
       aria-label={`Open ${title} universe`}
     >
       <div
-        className="universe-card__thumbnail"
+        className="card__thumbnail"
         style={cover ? { backgroundImage: `url(${cover})` } : undefined}
       />
 
-      <div className="universe-card__content">
-        <h3 className="universe-card__title">{title}</h3>
+      <div className="card__content">
+        <h3 className="card__title">{title}</h3>
 
-        <div className="universe-card__metadata">
+        <div className="card__metadata">
           <span>Universe</span>
           <span>·</span>
           <span>{worksCount} works</span>
@@ -26,7 +26,7 @@ function UniverseCard({ title, worksCount, formatsCount, cover, onClick }) {
         </div>
       </div>
 
-      <ChevronRight className="universe-card__chevron" size={16} />
+      <ChevronRight className="card__chevron" size={16} />
     </button>
   )
 }
