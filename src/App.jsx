@@ -3,7 +3,6 @@ import { useState } from 'react'
 
 import Home from './pages/home'
 import UniversePage from './pages/UniversePage'
-
 import BottomNavigation from './components/reusable-components/navigation/BottomNavigation'
 
 function App() {

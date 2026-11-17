@@ -160,6 +160,10 @@ main {
   color: var(--color-texto);
 
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-texto); /* icono sin seleccionar: crema */
   text-decoration: none;
 }
 
@@ -178,10 +182,15 @@ main {
 
 .nav-icon svg {
   display: block;
+  fill: none;
+  stroke: currentColor;
 }
 
+/* Inactivo: solo contorno */
 .nav-icon svg [fill]:not([fill="none"]) {
-  fill: currentColor;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 0.95;
 }
 
 .nav-icon svg [stroke]:not([stroke="none"]) {
@@ -192,20 +201,23 @@ main {
   stroke-width: 0.95;
 }
 
-
-/* Icono seleccionado */
-
 .pestanas .activa .nav-icon {
   background: var(--color-primario);
   color: var(--color-sobre-primario);
 }
 
-.pestanas .activa .nav-icon svg [stroke] {
-  stroke-width: 2;
+.pestanas .activa .nav-icon svg {
+  fill: currentColor;
+  stroke: none;
 }
 
-.pestanas .activa .icon-fill path {
+.pestanas .activa .nav-icon svg [fill]:not([fill="none"]) {
   fill: currentColor;
+  stroke: none;
+}
+
+.pestanas .activa .nav-icon svg [stroke] {
+  stroke-width: 1.5;
 }
 
 
@@ -1022,7 +1034,7 @@ main {
   gap: 4px;
 }
 
-.universe-card {
+.card {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -1042,7 +1054,7 @@ main {
   cursor: pointer;
 }
 
-.universe-card__thumbnail {
+.card__thumbnail {
   flex: 0 0 40px;
 
   width: 40px;
@@ -1056,7 +1068,7 @@ main {
   background-position: center;
 }
 
-.universe-card__content {
+.btn-secundario {
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -1067,7 +1079,7 @@ main {
   overflow: hidden;
 }
 
-.universe-card__title {
+.card__title {
   align-self: stretch;
 
   margin: 0;
@@ -1082,7 +1094,7 @@ main {
   text-overflow: ellipsis;
 }
 
-.universe-card__metadata {
+.card__metadata {
   display: flex;
   align-items: center;
   gap: 4px;
@@ -1095,7 +1107,7 @@ main {
   white-space: nowrap;
 }
 
-.universe-card__chevron {
+.card__chevron {
   flex: 0 0 16px;
 
   width: 16px;
