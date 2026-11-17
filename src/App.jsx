@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Home from './pages/Home'
-import BottomNavigation from './components/reusable-components/navigation/BottomNavigation'
+import BottomNavigation from './components/navigation/BottomNavigation'
 
 function App() {
   const [current, setCurrent] = useState('home')

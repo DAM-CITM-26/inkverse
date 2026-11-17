@@ -1,9 +1,9 @@
 import NavigationIcon from './NavigationIcon';
-import HomeIcon from '../../../assets/icons/home-icon.svg?react';
-import DiscoveryIcon from '../../../assets/icons/discover-icon.svg?react';
-import LibraryIcon from '../../../assets/icons/library-icon.svg?react';
-import ProfileIcon from '../../../assets/icons/profile-icon.svg?react';
-import UniverseIcon from '../../../assets/icons/universe-icon.svg?react';
+import HomeIcon from '../../assets/icons/home-icon.svg?react';
+import DiscoveryIcon from '../../assets/icons/discover-icon.svg?react';
+import LibraryIcon from '../../assets/icons/library-icon.svg?react';
+import ProfileIcon from '../../assets/icons/profile-icon.svg?react';
+import UniverseIcon from '../../assets/icons/universe-icon.svg?react';
 
 /**
  * Los cinco destinos de la app (en la barra solo se ven los iconos). Son siempre los mismos en todas las páginas;
