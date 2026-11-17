@@ -465,19 +465,19 @@ h1 { font-family: var(--fuente-titulos); font-weight: 400; }
   gap: 4px;
 }
 
-
-.logo {
-  position: relative;
-  width: 120px;
-  height: 40px;
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 0 16px;
+  overflow: hidden;
 }
 
-.logo__shape {
-  position: absolute;
-  width: 114.37px;
-  height: 25.19px;
-  left: 5.63px;
-  top: 14.81px;
-  color: var(--color-texto);
-  background: var(--color-texto);
+.logo {
+  display: block;
+  width: 120px;
+  height: 40px;
+  aspect-ratio: 3 / 1;
+  object-fit: contain;
 }
