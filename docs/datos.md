@@ -38,7 +38,7 @@ Propiedad | Tipo | Ejemplo | Qué es |
 { id: 2, nombre: "Harry Potter", descripcion: "El mundo mágico en papel, en el cine y en la escena.", color: "#4B3A8C", obras: [7, 8, 9, 10] }
 ```
 
-**Lo usan:** _COMPLETAR con los componentes de `docs/componentes.md` que reciben un universo por props
+**Lo usan:** UniverseCard
 
 ## OBRAS
 
@@ -51,14 +51,14 @@ Propiedad | Tipo   | Ejemplo | Qué es |
 | `formato` | texto | `"Película"` | Uno de: `"Libro"`, `"Película"`, `"Serie"` |
 | `anio` | número | `2013` | Año de publicación o estreno |
 | `universoId` | número | `1` | Universo al que pertenece (`UNIVERSOS.id`) |
-| `fidelity` | número o `null` | `88` | COMPLETAR: qué mide (de 0 a 100). Es `null` en los libros y en las obras sin valorar
+| `fidelity` | número o `null` | `88` | Mide el nivel de fidelidad. Es `null` en los libros y en las obras sin valorar
 
 **Ejemplo:**
 ```js
 { id: 2, nombre: "Harry Potter", descripcion: "El mundo mágico en papel, en el cine y en la escena.", color: "#4B3A8C", obras: [7, 8, 9, 10] }
 ```
 
-**Lo usan:** _COMPLETAR con los componentes de `docs/componentes.md` que reciben un universo por props._
+**Lo usan:** StatusCard, FormatChip
 
 ## PROGRESO
 
@@ -74,7 +74,7 @@ Propiedad | Tipo   | Ejemplo | Qué es |
 { obraId: 2, progreso: 60 }
 ```
 
-**Lo usan:** _COMPLETAR._
+**Lo usan:** ContinueSection, StatusCard y ProgressBar
 
 ## RESENAS
 
@@ -94,4 +94,4 @@ Propiedad | Tipo   | Ejemplo | Qué es |
 
 Las reseñas no tienen `id`. Para la `key` se puede combinar `obraId` y `autor`.
 
-**Lo usan:** _COMPLETAR._
+**Lo usan:** ReviewsSection, Comment
