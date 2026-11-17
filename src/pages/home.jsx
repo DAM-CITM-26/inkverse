@@ -1,89 +1,6 @@
-
-import UniverseCard from '../components/molecules/UniverseCard'
 import Logo from '../components/atoms/Logo'
 import HomeHero from '../components/molecules/HomeHero'
-import ReviewCard from '../components/molecules/ReviewCard'
-
-function ContinueReadingItem({ title, progress }) {
-  return (
-    <div className="continue-item">
-      <div className="continue-item__thumbnail" />
-
-      <div className="continue-item__content">
-        <h3>{title}</h3>
-        <p>
-          <span>Book</span>
-          <span>·</span>
-          <span>In progress</span>
-          <span>·</span>
-          <span>{progress}%</span>
-        </p>
-      </div>
-
-      <span className="continue-item__chevron">›</span>
-    </div>
-  )
-}
-
-/**
- * SectionHeading
- * Componente que muestra una sección de Home
- * a partir de un título y una lista de elementos.
- *
- * 
- * Props:
- * - title: título de la sección.
- * - data: elementos que se deben mostrar.
- * - type: tipo de contenido de cada elemento.
- */
-function SectionHeading({ title, data }) {
-  const type = data[0]?.type
-
-  const listClass = {
-    continueReading: 'home-section__list',
-    universe: 'universe-list',
-    review: 'reviews-list',
-  }[type]
-
-  return (
-    <section className="home-section">
-      <h2 className="home-section__title">{title}</h2>
-
-      <div className={listClass}>
-        {data.map((item) => {
-          switch (item.type) {
-            case 'continueReading':
-              return (
-                <ContinueReadingItem
-                  key={item.id}
-                  {...item.props}
-                />
-              )
-
-            case 'universe':
-              return (
-                <UniverseCard
-                  key={item.id}
-                  {...item.props}
-                />
-              )
-
-            case 'review':
-              return (
-                <ReviewCard
-                  key={item.id}
-                  {...item.props}
-                />
-              )
-
-            default:
-              return null
-          }
-        })}
-      </div>
-    </section>
-  )
-}
+import SectionHeading from '../components/navigation/SectionHeading'
 
 function Home() {
   const statusData = [
@@ -92,6 +9,7 @@ function Home() {
       type: 'continueReading',
       props: {
         title: 'Harry Potter and the Prisoner of Azkaban',
+        type: 'Book',
         progress: 42,
       },
     },
@@ -100,6 +18,7 @@ function Home() {
       type: 'continueReading',
       props: {
         title: 'Dune',
+        type: 'Book',
         progress: 68,
       },
     },

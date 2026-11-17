@@ -1,10 +1,10 @@
-import StatusCard from "../../molecules/StatusCard";
+import StatusCard from "../molecules/StatusCard";
 import UniverseCard from "../molecules/UniverseCard";
 import ReviewCard from "../molecules/ReviewCard";
 
 // type (como aparecerá en el JSON) -> componente + clase de la lista
 const REGISTRY = {
-  continueReading: { Component: ContinueReadingItem, listClass: 'home-section__list' },
+  continueReading: { Component: StatusCard, listClass: 'home-section__list' },
   universe:        { Component: UniverseCard,        listClass: 'universe-list' },
   review:          { Component: ReviewCard,          listClass: 'reviews-list' },
 }
