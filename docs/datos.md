@@ -9,6 +9,16 @@ La aplicación trabaja con **datos de ejemplo (dummy)** escritos en `src/data/`,
 | `CONTINUAR` | `src/data/continuar.js` | Obras empezadas y su progreso |
 | `RESENAS`   | `src/data/resenas.js`  | Opiniones de usuarios sobre las obras |
 
+## Cómo se relacionan
+
+```
+UNIVERSOS ──(obras / universoId)── OBRAS ──(obraId)── CONTINUAR
+                                      └─────(obraId)── RESENAS
+```
+
+- Un universo tiene varias obras. La relación está en los dos sentidos: `UNIVERSOS.obras` lista los `id` de sus obras y cada obra guarda su `universoId`. Los dos tienen que coincidir.
+- `CONTINUAR.obraId` y `RESENAS.obraId` apuntan a `OBRAS.id`.
+
 ## UNIVERSOS
 
 **Fichero:** `src/data/universos.js` · **Qué representa:** una saga o mundo (Harry Potter, Dune…) que reúne sus libros, películas y series.
