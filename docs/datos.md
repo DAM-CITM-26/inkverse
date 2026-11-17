@@ -60,9 +60,9 @@ Propiedad | Tipo   | Ejemplo | Qué es |
 
 **Lo usan:** StatusCard, FormatChip
 
-## PROGRESO
+## CONTINUAR
 
-**Fichero:** `src/data/progreso.js` · **Qué representa:** las obras que la persona tiene a medias.
+**Fichero:** `src/data/continuar.js` · **Qué representa:** las obras que la persona tiene a medias.
 
 | Propiedad | Tipo | Ejemplo | Qué es |
 |-----------|------|---------|--------|
