@@ -1,5 +1,6 @@
 
 import { useState } from 'react'
+import './UniversePage.css'
 
 const works = [
   { id: 1, title: 'The Hunger Games', year: 2008, format: 'book' },
