@@ -3,28 +3,9 @@ import HomeHero from '../components/molecules/HomeHero'
 import SectionHeading from '../components/navigation/SectionHeading'
 import FEATURED_UNIVERSES from '../data/featuredUniverses.json'
 import RESENAS from '../data/resenas.json'
+import CONTINUAR from '../data/continuar.json'
 
 function Home({ onNavigate }) {
-  const statusData = [
-    {
-      id: 1,
-      type: 'continueReading',
-      props: {
-        title: 'Harry Potter and the Prisoner of Azkaban',
-        type: 'Book',
-        progress: 42,
-      },
-    },
-    {
-      id: 2,
-      type: 'continueReading',
-      props: {
-        title: 'Dune',
-        type: 'Book',
-        progress: 68,
-      },
-    },
-  ]
 
   const recommended = [
     {
@@ -47,40 +28,6 @@ function Home({ onNavigate }) {
     },
   ]
 
-  const reviews = [
-    {
-      id: 1,
-      type: 'review',
-      props: {
-        username: 'AragornFan_NZ',
-        rating: 4,
-        text: 'An absolute masterpiece of epic fantasy. The world-building and depth of Middle-earth are unmatched.',
-        spoiler: true,
-        spoilerText:
-          "I still get goosebumps at the moment Gollum falls into Mount Doom with the One Ring, unwittingly destroying Middle-earth's greatest threat just as Frodo succumbs to its power. An incredible end to a legendary journey.",
-      },
-    },
-    {
-      id: 2,
-      type: 'review',
-      props: {
-        username: 'miaaaa123',
-        rating: 3,
-        text: 'Dune makes its world feel vast, strange and alive.',
-        userImage: '/images/mia-pfp.jpg',
-      },
-    },
-    {
-      id: 3,
-      type: 'review',
-      props: {
-        username: 'WandMaster_99',
-        rating: 5,
-        text: 'Hogwarts feels like a second home. The evolution of the characters from a magical world filled with childhood wonder to a dark struggle for survival is simply brilliant.',
-      },
-    },
-  ]
-
   return (
     <main className="home">
       <header className="home__header">
@@ -93,9 +40,10 @@ function Home({ onNavigate }) {
           subtitle="Pick up where you left off, or find your next favourite."
         />
 
+        {/* Mostramos las obras que el usuario tiene empezadas. */}
         <SectionHeading
           title="Continue Reading"
-          data={statusData}
+          data={CONTINUAR}
         />
 
         <SectionHeading

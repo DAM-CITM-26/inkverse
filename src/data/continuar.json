@@ -1,6 +1,32 @@
-
 [
-  { "obraId": 2, "progreso": 60 },
-  { "obraId": 9, "progreso": 30 },
-  { "obraId": 11, "progreso": 15 }
+  {
+    "id": 1,
+    "type": "continueReading",
+    "obraId": 2,
+    "props": {
+      "title": "En llamas",
+      "type": "Book",
+      "progress": 60
+    }
+  },
+  {
+    "id": 2,
+    "type": "continueReading",
+    "obraId": 9,
+    "props": {
+      "title": "El prisionero de Azkaban",
+      "type": "Movie",
+      "progress": 30
+    }
+  },
+  {
+    "id": 3,
+    "type": "continueReading",
+    "obraId": 11,
+    "props": {
+      "title": "Dune",
+      "type": "Book",
+      "progress": 15
+    }
+  }
 ]
