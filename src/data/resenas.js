@@ -1,0 +1,9 @@
+// Reseñas: opiniones de usuarios sobre una obra (obraId). Algunas avisan de spoiler.
+// Modelo documentado en docs/datos.md
+
+export const RESENAS = [
+  { obraId: 5, autor: "lunareader", texto: "La arena giratoria está igual que en el libro, y el final del vasallaje te deja sin aire.", spoiler: true },
+  { obraId: 5, autor: "panem_fan", texto: "La fotografía es preciosa y la banda sonora acompaña muy bien.", spoiler: false },
+  { obraId: 9, autor: "potterhead", texto: "Recortan mucho la explicación de quién es Lunático, Colagusano, Canuto y Cornamenta.", spoiler: true },
+  { obraId: 12, autor: "arrakis", texto: "Visualmente brutal; se nota que solo adapta la primera mitad del libro.", spoiler: false },
+];

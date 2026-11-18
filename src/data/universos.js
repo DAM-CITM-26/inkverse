@@ -1,0 +1,8 @@
+// Universos: cada uno agrupa varias obras (libros, películas, series).
+// Modelo documentado en docs/datos.md
+
+export const UNIVERSOS = [
+  { id: 1, nombre: "Los juegos del hambre", descripcion: "Panem, los distritos y los Juegos: los libros y su salto al cine.", color: "#7A2E2E", obras: [1, 2, 3, 4, 5, 6] },
+  { id: 2, nombre: "Harry Potter", descripcion: "El mundo mágico en papel, en el cine y en la escena.", color: "#4B3A8C", obras: [7, 8, 9, 10] },
+  { id: 3, nombre: "Dune", descripcion: "Arrakis, la especia y las adaptaciones de una saga enorme.", color: "#9A6B2F", obras: [11, 12, 13] },
+];
