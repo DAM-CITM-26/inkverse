@@ -1,55 +1,50 @@
-/* =============================================================
-   HOME — FEATURED UNIVERSE
-============================================================= */
-
-/* Contenedor principal del banner */
+/* Contenedor: referencia de posición para el botón de favorito */
 .featured-universe {
-  /* Necesario para que el ::after del título se estire sobre toda la card */
   position: relative;
 
-  display: flex;
   width: 372px;
-  max-width: 100%;            /* evita desbordar en pantallas estrechas */
-  height: 188px;              /* si el título puede ocupar 2 líneas, usa min-height */
+  max-width: 100%;
+  height: 188px;
+
+  border-radius: 16px;
+}
+
+/* Card entera: es el botón principal */
+.featured-universe__card {
+  display: flex;
+  width: 100%;
+  height: 100%;
   padding: 16px;
   flex-direction: column;
-  justify-content: space-between;  /* badges arriba, info abajo */
+  justify-content: space-between;
   align-items: flex-start;
 
+  border: none;
   border-radius: 16px;
   background: var(--Image, linear-gradient(135deg, #52205F 0%, #27122F 70.72%));
   background-size: cover;
   background-position: center;
   color: var(--warm-100, #F4E8D1);
+
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
 }
 
-/* Fila superior: badges a la izquierda, corazón a la derecha */
-.featured-universe__top {
-  /* z-index para que el corazón quede por encima del ::after clicable */
-  position: relative;
-  z-index: 1;
-
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: var(--espacio-2);
-
-  width: 100%;
+.featured-universe__card:focus-visible {
+  outline: 2px solid var(--warm-100, #F4E8D1);
+  outline-offset: 2px;
 }
 
-/* Lista de badges (sin estilos de lista por defecto) */
+/* Badges: dejan hueco a la derecha para el corazón (28px + margen) */
 .featured-universe__badges {
   display: flex;
   flex-wrap: wrap;
   gap: var(--espacio-2);
 
-  margin: 0;
-  padding: 0;
-
-  list-style: none;
+  padding-right: 44px;
 }
 
-/* Badge individual: píldora crema translúcida sobre el degradado */
 .featured-universe__badge {
   padding: 4px 12px;
 
@@ -62,22 +57,7 @@
   line-height: 1.3;
 }
 
-/* Botón de favorito: sin estilos de botón, hereda el color crema */
-.featured-universe__fav {
-  display: grid;
-  place-items: center;
-  flex: none;                 /* no se encoge si hay muchos badges */
-
-  padding: 0;
-
-  border: none;
-  background: none;
-  color: var(--warm-100, #F4E8D1);
-
-  cursor: pointer;
-}
-
-/* Bloque inferior: título + metadatos */
+/* Bloque inferior */
 .featured-universe__info {
   display: flex;
   flex-direction: column;
@@ -86,52 +66,38 @@
   width: 100%;
 }
 
-/* El h3 solo agrupa semánticamente; el tamaño lo da el botón de dentro */
 .featured-universe__title {
-  margin: 0;
-  font-size: inherit;
+  color: var(--warm-100, #F4E8D1);
+  font-family: var(--fuente);
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.2;
 }
 
-/* Botón del título: parece texto, pero es el que abre el universo */
-.featured-universe__open {
+.featured-universe__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+
+  color: var(--warm-100, #F4E8D1);
+  font-family: var(--fuente);
+  font-size: 16px;
+}
+
+/* Favorito: encima de la card, esquina superior derecha */
+.featured-universe__fav {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+
+  display: grid;
+  place-items: center;
+
   padding: 0;
 
   border: none;
   background: none;
   color: var(--warm-100, #F4E8D1);
 
-  font-family: var(--fuente);
-  font-size: 28px;
-  font-weight: 600;
-  line-height: 1.2;
-  text-align: left;
-
   cursor: pointer;
-}
-
-/* Truco: estira el área clicable del título por toda la card */
-.featured-universe__open::after {
-  content: '';
-  position: absolute;
-  inset: 0;                   /* relativo a .featured-universe (position: relative) */
-  border-radius: 16px;
-}
-
-/* Anillo de foco para teclado, dibujado alrededor de toda la card */
-.featured-universe__open:focus-visible::after {
-  outline: 2px solid var(--warm-100, #F4E8D1);
-  outline-offset: 2px;
-}
-
-/* Línea de metadatos: "Autor · N formats" */
-.featured-universe__meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-
-  margin: 0;
-
-  color: var(--warm-100, #F4E8D1);
-  font-family: var(--fuente);
-  font-size: 16px;
 }

@@ -1,13 +1,13 @@
 export const FEATURED_UNIVERSES = [
-    {
-    id: "hp",
+  {
+    id: "thg",
     type: "featuredUniverse",
     props: {
-        title: "Harry Potter",
-        author: "J. K. Rowling",
-        formatsCount: 3,
-        genres: ["Fantasy", "Sci-fi", "Futuristic"],
-        isFavorite: false,
+      title: "The Hunger Games",
+      author: "Suzanne Collins",
+      formatsCount: 3,
+      genres: ["Dystopian", "Sci-fi", "Action"],
+      isFavorite: false,
     },
-    }
+  },
 ];

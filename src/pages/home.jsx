@@ -1,6 +1,7 @@
 import Logo from '../components/atoms/Logo'
 import HomeHero from '../components/molecules/HomeHero'
 import SectionHeading from '../components/navigation/SectionHeading'
+import { FEATURED_UNIVERSES } from '../data/featuredUniverses'
 
 function Home() {
   const statusData = [
@@ -94,6 +95,11 @@ function Home() {
         <SectionHeading
           title="Continue Reading"
           data={statusData}
+        />
+
+        <SectionHeading
+          title="Featured Universe"
+          data={FEATURED_UNIVERSES}
         />
 
         <SectionHeading

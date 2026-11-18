@@ -860,7 +860,7 @@ main {
   gap: 16px;
 
   width: 100%;
-  padding: 16px 24px 32px;
+  padding: 16px 8px 32px;
 }
 
 
@@ -1253,7 +1253,7 @@ main {
 
 @media (max-width: 480px) {
   .home__content {
-    padding-inline: 24px;
+    padding-inline: 8px;
   }
 }
 

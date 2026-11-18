@@ -1,6 +1,7 @@
 import StatusCard from "../molecules/StatusCard";
 import UniverseCard from "../molecules/UniverseCard";
 import ReviewCard from "../molecules/ReviewCard";
+import FeaturedUniverse from "../molecules/FeaturedUniverse";
 
 // type (como aparecerá en el JSON) -> componente + clase de la lista
 const REGISTRY = {
@@ -30,7 +31,7 @@ export default function SectionHeading({ title, data = [] }) {
                     }
 
                     const { Component } = entry
-                    return <Component key={id} {...props} />
+                    return <Component key={id} id={id} {...props} />
                 })}
             </div>
         </section>
