@@ -2,6 +2,7 @@ import Logo from '../components/atoms/Logo'
 import HomeHero from '../components/molecules/HomeHero'
 import SectionHeading from '../components/navigation/SectionHeading'
 import FEATURED_UNIVERSES from '../data/featuredUniverses.json'
+import RESENAS from '../data/resenas.json'
 
 function Home({ onNavigate }) {
   const statusData = [
@@ -110,7 +111,7 @@ function Home({ onNavigate }) {
 
         <SectionHeading
           title="Reviews"
-          data={reviews}
+          data={RESENAS}
         />
       </div>
     </main>
