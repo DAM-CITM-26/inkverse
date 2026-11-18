@@ -2,78 +2,131 @@
 import { useState } from 'react'
 import './UniversePage.css'
 
-const works = [
-  { id: 1, title: 'The Hunger Games', year: 2008, format: 'book' },
-  { id: 2, title: 'Catching Fire', year: 2009, format: 'book' },
-  { id: 3, title: 'Mockingjay', year: 2010, format: 'book' },
-  { id: 4, title: 'The Ballad of Songbirds and Snakes', year: 2020, format: 'book' },
-  { id: 5, title: 'Sunrise on the Reaping', year: 2025, format: 'book' },
-  { id: 6, title: 'The Hunger Games', year: 2012, format: 'movie' },
-  { id: 7, title: 'Catching Fire', year: 2013, format: 'movie' },
-  { id: 8, title: 'Mockingjay – Part 1', year: 2014, format: 'movie' },
-  { id: 9, title: 'Mockingjay – Part 2', year: 2015, format: 'movie' },
-  { id: 10, title: 'The Ballad of Songbirds and Snakes', year: 2023, format: 'movie' },
-]
+import UNIVERSOS from '../data/universos.json'
+import OBRAS from '../data/obras.json'
 
-function UniversePage() {
-    const [format, setFormat] = useState('all')
+import { obtenerObrasPorUniverso } from '../utils/universos'
 
-    const filteredWorks =
-    format === 'all'
-        ? works
-        : works.filter((work) => work.format === format)
+function UniversePage({ universeId }) {
+
+  const [format, setFormat] = useState('all')
+
+  // Buscamos el universo seleccionado.
+  const universe = UNIVERSOS.find(
+    (universo) => universo.id === universeId
+  )
+
+  // Si no existe el universo, no mostramos la página.
+  if (!universe) {
+    return <p>Universe not found.</p>
+  }
+
+  // Obtenemos todas las obras de este universo.
+  const works = obtenerObrasPorUniverso(universe, OBRAS)
+
+  // Contamos los libros y las películas.
+  const booksCount = works.filter(
+    (work) => work.formato === 'Libro'
+  ).length
+
+  const moviesCount = works.filter(
+    (work) => work.formato === 'Película'
+  ).length
+
+  // Filtramos las obras según el formato seleccionado.
+  const filteredWorks = works.filter((work) => {
+    if (format === 'all') return true
+
+    if (format === 'book') return work.formato === 'Libro'
+
+    if (format === 'movie') return work.formato === 'Película'
+
+    return false
+  })
 
   return (
     <main className="universe-page">
 
+      {/* Información del universo */}
       <header className="universe-header">
-        <h1>The Hunger Games</h1>
-        <p>Suzanne Collins</p>
+        <h1>{universe.title}</h1>
+        <p>{universe.author}</p>
       </header>
 
       <section className="universe-content">
 
-    <div className="universe-filters">
-    <button
-        className={format === 'all' ? 'universe-chip active' : 'universe-chip'}
-        onClick={() => setFormat('all')}
-    >
-        All
-    </button>
+        {/* Filtros por formato */}
+        <div className="universe-filters">
 
-    <button
-        className={format === 'book' ? 'universe-chip active' : 'universe-chip'}
-        onClick={() => setFormat('book')}
-    >
-        5 books
-    </button>
+          <button
+            className={
+              format === 'all'
+                ? 'universe-chip active'
+                : 'universe-chip'
+            }
+            onClick={() => setFormat('all')}
+          >
+            All
+          </button>
 
-    <button
-        className={format === 'movie' ? 'universe-chip active' : 'universe-chip'}
-        onClick={() => setFormat('movie')}
-    >
-        5 movies
-    </button>
-    </div>
+          <button
+            className={
+              format === 'book'
+                ? 'universe-chip active'
+                : 'universe-chip'
+            }
+            onClick={() => setFormat('book')}
+          >
+            {booksCount} books
+          </button>
 
+          <button
+            className={
+              format === 'movie'
+                ? 'universe-chip active'
+                : 'universe-chip'
+            }
+            onClick={() => setFormat('movie')}
+          >
+            {moviesCount} movies
+          </button>
+
+        </div>
+
+        {/* Lista de obras */}
         <div className="universe-list">
+
           {filteredWorks.map((work, index) => (
-            <article className="universe-card" key={work.id}>
+
+            <article
+              className="universe-card"
+              key={work.id}
+            >
+
               <div className="universe-card__thumbnail" />
 
               <div className="universe-card__content">
+
                 <h3 className="universe-card__title">
-                  {work.title}
+                  {work.titulo}
                 </h3>
 
                 <div className="universe-card__metadata">
                   <span>{index + 1}</span>
                   <span>·</span>
-                  <span>{work.year}</span>
+                  <span>{work.anio}</span>
                 </div>
+
               </div>
+
             </article>
+
           ))}
+
+          {filteredWorks.length === 0 && (
+            <p>No works available in this format.</p>
+          )}
+
         </div>
 
       </section>
