@@ -19,6 +19,10 @@
   --color-borde: #B38AFF;
   --color-peligro: #F47769;
 
+  /* COLORES DEL FIGMA */
+  --warm-300: #C7B8A6;
+  --neutral-dark: #111111;
+
   --fuente: 'Google Sans Flex', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --fuente-titulos: 'DM Serif Display', Georgia, serif;
 
@@ -958,74 +962,8 @@ main {
   width: 100%;
 }
 
-.continue-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-
-  width: 100%;
-  min-height: 70px;
-  padding: 8px;
-
-  overflow: hidden;
-}
-
-.continue-item__thumbnail {
-  flex: 0 0 40px;
-
-  width: 40px;
-  height: 54px;
-
-  background: linear-gradient(135deg, #52205F 0%, #27122F 100%);
-  border: 1px solid #444444;
-  border-radius: 4px;
-}
-
-.continue-item__content {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  gap: 2px;
-
-  min-width: 0;
-  overflow: hidden;
-}
-
-.continue-item__content h3 {
-  margin: 0;
-
-  overflow: hidden;
-
-  color: var(--color-texto);
-  font-family: var(--fuente);
-  font-size: 14px;
-  font-weight: 600;
-
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-.continue-item__content p {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-
-  margin: 0;
-
-  color: var(--color-texto-suave);
-  font-family: var(--fuente);
-  font-size: 12px;
-}
-
-.continue-item__chevron {
-  flex: 0 0 auto;
-  color: var(--color-texto-suave);
-  font-size: 24px;
-}
-
-
 /* =============================================================
-   16. HOME — UNIVERSE CARDS
+   16. HOME — CARDS (continue reading + universos)
 ============================================================= */
 
 .universe-list {
@@ -1036,18 +974,20 @@ main {
 
 .card {
   display: flex;
+  min-height: 44px;
+  padding: var(--spacing-8, 8px) 8px;
   align-items: center;
-  gap: 8px;
-
-  width: 100%;
-  min-height: 70px;
-  padding: 8px;
+  gap: var(--spacing-8, 8px);
+  align-self: stretch;
 
   overflow: hidden;
 
   border: none;
   background: transparent;
   color: var(--color-texto);
+
+  border-radius: 8px;
+  transition: background-color 0.15s ease;
 
   text-align: left;
   font: inherit;
@@ -1068,7 +1008,7 @@ main {
   background-position: center;
 }
 
-.btn-secundario {
+.card__content {
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -1076,35 +1016,34 @@ main {
   gap: 2px;
 
   min-width: 0;
-  overflow: hidden;
 }
 
 .card__title {
   align-self: stretch;
 
   margin: 0;
-  overflow: hidden;
 
   color: var(--color-texto);
   font-family: var(--fuente);
   font-size: 14px;
   font-weight: 600;
 
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 .card__metadata {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 4px;
+
+  margin: 0;
 
   color: var(--color-texto-suave);
   font-family: var(--fuente);
   font-size: 12px;
   font-weight: 400;
-
-  white-space: nowrap;
 }
 
 .card__chevron {
@@ -1117,6 +1056,39 @@ main {
   stroke-width: 1.25;
 }
 
+.card__title,
+.card__metadata,
+.card__chevron {
+  transition: color 0.15s ease;
+}
+
+/* Hold / click */
+.card:active,
+.card:focus-visible {
+  background: var(--warm-300, #C7B8A6);
+}
+
+.card:active .card__title,
+.card:active .card__metadata,
+.card:active .card__chevron,
+.card:focus-visible .card__title,
+.card:focus-visible .card__metadata,
+.card:focus-visible .card__chevron {
+  color: var(--neutral-dark, #111111);
+}
+
+/* Hover solo en dispositivos con ratón */
+@media (hover: hover) {
+  .card:hover {
+    background: var(--warm-300, #C7B8A6);
+  }
+
+  .card:hover .card__title,
+  .card:hover .card__metadata,
+  .card:hover .card__chevron {
+    color: var(--neutral-dark, #111111);
+  }
+}
 
 /* =============================================================
    17. HOME — REVIEWS
