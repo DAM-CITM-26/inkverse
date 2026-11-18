@@ -1,117 +1,93 @@
+
 import Logo from '../components/atoms/Logo'
 import HomeHero from '../components/molecules/HomeHero'
 import SectionHeading from '../components/navigation/SectionHeading'
-import { FEATURED_UNIVERSES } from '../data/featuredUniverses'
+
+import UNIVERSOS from '../data/universos.json'
+import OBRAS from '../data/obras.json'
+import RESENAS from '../data/resenas.json'
+
+import { obtenerObrasEnCurso } from '../utils/obras'
+import {
+  obtenerObrasPorUniverso,
+  obtenerFormatos
+} from '../utils/universos'
 
 function Home({ onNavigate }) {
-  const statusData = [
-    {
-      id: 1,
+
+  // Obras que el usuario tiene empezadas.
+  const continueReading = obtenerObrasEnCurso(OBRAS)
+    .map((obra) => ({
+      id: obra.id,
       type: 'continueReading',
       props: {
-        title: 'Harry Potter and the Prisoner of Azkaban',
-        type: 'Book',
-        progress: 42,
-      },
-    },
-    {
-      id: 2,
-      type: 'continueReading',
-      props: {
-        title: 'Dune',
-        type: 'Book',
-        progress: 68,
-      },
-    },
-  ]
+        title: obra.titulo,
+        type: obra.formato === 'Libro' ? 'Book' : 'Movie',
+        progress: obra.progreso
+      }
+    }))
 
-  const recommended = [
-    {
-      id: 1,
-      type: 'universe',
-      props: {
-        title: 'Harry Potter',
-        worksCount: 19,
-        formatsCount: 2,
-      },
-    },
-    {
-      id: 2,
-      type: 'universe',
-      props: {
-        title: 'The Hunger Games',
-        worksCount: 11,
-        formatsCount: 2,
-      },
-    },
-  ]
+  // Universos destacados.
+  const featuredUniverses = UNIVERSOS
+    .filter((universo) => universo.featured)
+    .map((universo) => {
 
-  const reviews = [
-    {
-      id: 1,
-      type: 'review',
-      props: {
-        username: 'AragornFan_NZ',
-        rating: 4,
-        text: 'An absolute masterpiece of epic fantasy. The world-building and depth of Middle-earth are unmatched.',
-        spoiler: true,
-        spoilerText:
-          "I still get goosebumps at the moment Gollum falls into Mount Doom with the One Ring, unwittingly destroying Middle-earth's greatest threat just as Frodo succumbs to its power. An incredible end to a legendary journey.",
-      },
-    },
-    {
-      id: 2,
-      type: 'review',
-      props: {
-        username: 'miaaaa123',
-        rating: 3,
-        text: 'Dune makes its world feel vast, strange and alive.',
-        userImage: '/images/mia-pfp.jpg',
-      },
-    },
-    {
-      id: 3,
-      type: 'review',
-      props: {
-        username: 'WandMaster_99',
-        rating: 5,
-        text: 'Hogwarts feels like a second home. The evolution of the characters from a magical world filled with childhood wonder to a dark struggle for survival is simply brilliant.',
-      },
-    },
-  ]
+      // Obtenemos las obras del universo.
+      const obrasUniverso = obtenerObrasPorUniverso(
+        universo,
+        OBRAS
+      )
+
+      // Calculamos los formatos diferentes.
+      const formatsCount = obtenerFormatos(obrasUniverso).length
+
+      return {
+        id: universo.id,
+        type: 'featuredUniverse',
+        props: {
+          title: universo.title,
+          author: universo.author,
+          formatsCount,
+          genres: universo.genres,
+          cover: universo.cover,
+          isFavorite: universo.isFavorite
+        }
+      }
+    })
 
   return (
     <main className="home">
+
       <header className="home__header">
         <Logo />
       </header>
 
       <div className="home__content">
+
         <HomeHero
           title="What will you read or watch next?"
           subtitle="Pick up where you left off, or find your next favourite."
         />
 
+        {/* Obras que el usuario está leyendo o viendo */}
         <SectionHeading
           title="Continue Reading"
-          data={statusData}
+          data={continueReading}
         />
 
+        {/* Universos destacados */}
         <SectionHeading
           title="Featured Universe"
-          data={FEATURED_UNIVERSES}
+          data={featuredUniverses}
           onNavigate={onNavigate}
         />
 
-        <SectionHeading
-          title="Recommended for You"
-          data={recommended}
-        />
-
+        {/* Reseñas de la comunidad */}
         <SectionHeading
           title="Reviews"
-          data={reviews}
+          data={RESENAS}
         />
+
       </div>
     </main>
   )

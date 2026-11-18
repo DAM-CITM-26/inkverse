@@ -1,0 +1,30 @@
+
+[
+  {
+    "id": 2,
+    "titulo": "En llamas",
+    "formato": "Libro",
+    "anio": 2009,
+    "universoId": 1,
+    "fidelity": null,
+    "progreso": 60
+  },
+  {
+    "id": 9,
+    "titulo": "El prisionero de Azkaban",
+    "formato": "Película",
+    "anio": 2004,
+    "universoId": 2,
+    "fidelity": 71,
+    "progreso": 30
+  },
+  {
+    "id": 11,
+    "titulo": "Dune",
+    "formato": "Libro",
+    "anio": 1965,
+    "universoId": 3,
+    "fidelity": null,
+    "progreso": 15
+  }
+]

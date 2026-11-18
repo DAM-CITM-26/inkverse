@@ -1,0 +1,42 @@
+
+[
+  {
+    "id": 1,
+    "nombre": "Los juegos del hambre",
+    "title": "The Hunger Games",
+    "author": "Suzanne Collins",
+    "descripcion": "Panem, los distritos y los Juegos: los libros y su salto al cine.",
+    "color": "#7A2E2E",
+    "cover": "/images/universes/hunger-games.jpg",
+    "obras": [1, 2, 3, 4, 5, 6],
+    "genres": ["Dystopian", "Sci-fi", "Action"],
+    "featured": true,
+    "isFavorite": false
+  },
+  {
+    "id": 2,
+    "nombre": "Harry Potter",
+    "title": "Harry Potter",
+    "author": "J.K. Rowling",
+    "descripcion": "El mundo mágico en papel, en el cine y en la escena.",
+    "color": "#4B3A8C",
+    "cover": "/images/universes/harry-potter.jpg",
+    "obras": [7, 8, 9, 10],
+    "genres": ["Fantasy", "Adventure", "Magic"],
+    "featured": false,
+    "isFavorite": false
+  },
+  {
+    "id": 3,
+    "nombre": "Dune",
+    "title": "Dune",
+    "author": "Frank Herbert",
+    "descripcion": "Arrakis, la especia y las adaptaciones de una saga enorme.",
+    "color": "#9A6B2F",
+    "cover": "/images/universes/dune.jpg",
+    "obras": [11, 12, 13],
+    "genres": ["Sci-fi", "Adventure", "Politics"],
+    "featured": false,
+    "isFavorite": false
+  }
+]

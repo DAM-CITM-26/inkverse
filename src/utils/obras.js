@@ -1,13 +1,18 @@
-export function buscarObraPorID(obras, id){
-    /*Recibe la lista de obras y un id, y devuelve la obra completa que tiene ese id
-    CONTINUAR, solo guarda el id de la obra, pero la tarjeta necesita título y formato*/
-    return obras.find(obra => obra.id === id);
+
+/**
+ * Busca una obra por su ID.
+ * Devuelve la obra completa o undefined si no existe.
+ */
+export function buscarObraPorID(obras, id) {
+  return obras.find((obra) => obra.id === id)
 }
 
-export function obtenerObrasEnCurso(continuar, obras){
-    return continuar.map((item) => {
-        const obra = buscarObraPorID(obras, item.id);
-        return obra ? { ...obra, progreso: item.progreso } : null;
-    })
-    .filter(obra => obra !== null);
-} /*La función junta los parámetros de dos listas: la del progreso de cada obra (continuar) y los datos de cada obra, para poder mostrar título de la obra y su progreso*/
+/**
+ * Devuelve las obras que el usuario tiene empezadas.
+ * Solo incluye obras con progreso entre 1 y 99.
+ */
+export function obtenerObrasEnCurso(obras) {
+  return obras.filter(
+    (obra) => obra.progreso > 0 && obra.progreso < 100
+  )
+}

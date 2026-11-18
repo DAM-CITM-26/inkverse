@@ -32,10 +32,21 @@ export default function ReviewCard({
   return (
     <article className="review-card">
       <div className="review-card__header">
+
+        {/* Avatar del usuario.
+            Si userImage no viene en las props, utiliza la imagen predeterminada.
+            Si la imagen personalizada falla al cargar, también utiliza el avatar predeterminado. */}
         <img
           className="review-card__avatar"
           src={userImage}
           alt={`${username}'s profile`}
+          onError={(e) => {
+            // Evita un bucle infinito si también falla la imagen predeterminada.
+            e.currentTarget.onerror = null
+
+            // Sustituye la imagen que ha fallado por el avatar por defecto.
+            e.currentTarget.src = '/images/user-pfp.svg'
+          }}
         />
 
         <span className="review-card__username">
