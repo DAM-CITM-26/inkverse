@@ -7,36 +7,39 @@ import UNIVERSOS from '../data/universos.json'
 import OBRAS from '../data/obras.json'
 import RESENAS from '../data/resenas.json'
 
+import { obtenerObrasEnCurso } from '../utils/obras'
+import {
+  obtenerObrasPorUniverso,
+  obtenerFormatos
+} from '../utils/universos'
+
 function Home({ onNavigate }) {
 
   // Obras que el usuario tiene empezadas.
-  const continueReading = OBRAS
-    .filter((obra) => obra.progreso > 0 && obra.progreso < 100)
-    .map((obra) => {
-
-      return {
-        id: obra.id,
-        type: 'continueReading',
-        props: {
-          title: obra.titulo,
-          type: obra.formato === 'Libro' ? 'Book' : 'Movie',
-          progress: obra.progreso
-        }
+  const continueReading = obtenerObrasEnCurso(OBRAS)
+    .map((obra) => ({
+      id: obra.id,
+      type: 'continueReading',
+      props: {
+        title: obra.titulo,
+        type: obra.formato === 'Libro' ? 'Book' : 'Movie',
+        progress: obra.progreso
       }
-    })
+    }))
 
   // Universos destacados.
   const featuredUniverses = UNIVERSOS
     .filter((universo) => universo.featured)
     .map((universo) => {
 
-      const obrasUniverso = OBRAS.filter(
-        (obra) => obra.universoId === universo.id
+      // Obtenemos las obras del universo.
+      const obrasUniverso = obtenerObrasPorUniverso(
+        universo,
+        OBRAS
       )
 
-      const formatsCount = new Set(
-        obrasUniverso.map((obra) => obra.formato)
-      ).size
+      // Calculamos los formatos diferentes.
+      const formatsCount = obtenerFormatos(obrasUniverso).length
 
       return {
         id: universo.id,
@@ -66,17 +69,20 @@ function Home({ onNavigate }) {
           subtitle="Pick up where you left off, or find your next favourite."
         />
 
+        {/* Obras que el usuario está leyendo o viendo */}
         <SectionHeading
           title="Continue Reading"
           data={continueReading}
         />
 
+        {/* Universos destacados */}
         <SectionHeading
           title="Featured Universe"
           data={featuredUniverses}
           onNavigate={onNavigate}
         />
 
+        {/* Reseñas de la comunidad */}
         <SectionHeading
           title="Reviews"
           data={RESENAS}
