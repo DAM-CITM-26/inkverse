@@ -1,15 +1,17 @@
 import StatusCard from "../molecules/StatusCard";
 import UniverseCard from "../molecules/UniverseCard";
 import ReviewCard from "../molecules/ReviewCard";
+import FeaturedUniverse from "../molecules/FeaturedUniverse";
 
 // type (como aparecerá en el JSON) -> componente + clase de la lista
 const REGISTRY = {
   continueReading: { Component: StatusCard, listClass: 'home-section__list' },
   universe:        { Component: UniverseCard,        listClass: 'universe-list' },
   review:          { Component: ReviewCard,          listClass: 'reviews-list' },
+  featuredUniverse: { Component: FeaturedUniverse, listClass: 'home-section__list' },
 }
 
-export default function SectionHeading({ title, data = [] }) {
+export default function SectionHeading({ title, data = [], onNavigate }) {
 
     if (data.length === 0) return null
 
@@ -29,7 +31,7 @@ export default function SectionHeading({ title, data = [] }) {
                     }
 
                     const { Component } = entry
-                    return <Component key={id} {...props} />
+                    return <Component key={id} id={id} onNavigate={onNavigate} {...props} />
                 })}
             </div>
         </section>
