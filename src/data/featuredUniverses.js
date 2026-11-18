@@ -1,6 +1,6 @@
 export const FEATURED_UNIVERSES = [
   {
-    id: "thg",
+    id: "universes",
     type: "featuredUniverse",
     props: {
       title: "The Hunger Games",

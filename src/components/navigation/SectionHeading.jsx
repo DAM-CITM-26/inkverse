@@ -11,7 +11,7 @@ const REGISTRY = {
   featuredUniverse: { Component: FeaturedUniverse, listClass: 'home-section__list' },
 }
 
-export default function SectionHeading({ title, data = [] }) {
+export default function SectionHeading({ title, data = [], onNavigate }) {
 
     if (data.length === 0) return null
 
@@ -31,7 +31,7 @@ export default function SectionHeading({ title, data = [] }) {
                     }
 
                     const { Component } = entry
-                    return <Component key={id} id={id} {...props} />
+                    return <Component key={id} id={id} onNavigate={onNavigate} {...props} />
                 })}
             </div>
         </section>

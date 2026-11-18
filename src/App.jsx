@@ -10,7 +10,7 @@ function App() {
 
   return (
     <>
-      {current === 'home' && <Home />}
+      {current === 'home' && <Home onNavigate={setCurrent} />}
 
       {current === 'universes' && <UniversePage />}
 
