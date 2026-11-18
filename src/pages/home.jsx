@@ -1,7 +1,7 @@
 import Logo from '../components/atoms/Logo'
 import HomeHero from '../components/molecules/HomeHero'
 import SectionHeading from '../components/navigation/SectionHeading'
-import { FEATURED_UNIVERSES } from '../data/featuredUniverses'
+import FEATURED_UNIVERSES from '../data/featuredUniverses.json'
 
 function Home({ onNavigate }) {
   const statusData = [
