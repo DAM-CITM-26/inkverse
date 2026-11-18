@@ -1,66 +1,87 @@
+
 import Logo from '../components/atoms/Logo'
 import HomeHero from '../components/molecules/HomeHero'
 import SectionHeading from '../components/navigation/SectionHeading'
-import FEATURED_UNIVERSES from '../data/featuredUniverses.json'
+
+import UNIVERSOS from '../data/universos.json'
+import OBRAS from '../data/obras.json'
 import RESENAS from '../data/resenas.json'
-import CONTINUAR from '../data/continuar.json'
 
 function Home({ onNavigate }) {
 
-  const recommended = [
-    {
-      id: 1,
-      type: 'universe',
-      props: {
-        title: 'Harry Potter',
-        worksCount: 19,
-        formatsCount: 2,
-      },
-    },
-    {
-      id: 2,
-      type: 'universe',
-      props: {
-        title: 'The Hunger Games',
-        worksCount: 11,
-        formatsCount: 2,
-      },
-    },
-  ]
+  // Obras que el usuario tiene empezadas.
+  const continueReading = OBRAS
+    .filter((obra) => obra.progreso > 0 && obra.progreso < 100)
+    .map((obra) => {
+
+      return {
+        id: obra.id,
+        type: 'continueReading',
+        props: {
+          title: obra.titulo,
+          type: obra.formato === 'Libro' ? 'Book' : 'Movie',
+          progress: obra.progreso
+        }
+      }
+    })
+
+  // Universos destacados.
+  const featuredUniverses = UNIVERSOS
+    .filter((universo) => universo.featured)
+    .map((universo) => {
+
+      const obrasUniverso = OBRAS.filter(
+        (obra) => obra.universoId === universo.id
+      )
+
+      const formatsCount = new Set(
+        obrasUniverso.map((obra) => obra.formato)
+      ).size
+
+      return {
+        id: universo.id,
+        type: 'featuredUniverse',
+        props: {
+          title: universo.title,
+          author: universo.author,
+          formatsCount,
+          genres: universo.genres,
+          cover: universo.cover,
+          isFavorite: universo.isFavorite
+        }
+      }
+    })
 
   return (
     <main className="home">
+
       <header className="home__header">
         <Logo />
       </header>
 
       <div className="home__content">
+
         <HomeHero
           title="What will you read or watch next?"
           subtitle="Pick up where you left off, or find your next favourite."
         />
 
-        {/* Mostramos las obras que el usuario tiene empezadas. */}
         <SectionHeading
           title="Continue Reading"
-          data={CONTINUAR}
+          data={continueReading}
         />
 
         <SectionHeading
           title="Featured Universe"
-          data={FEATURED_UNIVERSES}
+          data={featuredUniverses}
           onNavigate={onNavigate}
-        />
-
-        <SectionHeading
-          title="Recommended for You"
-          data={recommended}
         />
 
         <SectionHeading
           title="Reviews"
           data={RESENAS}
         />
+
       </div>
     </main>
   )

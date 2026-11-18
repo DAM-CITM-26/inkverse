@@ -1,16 +1,30 @@
 
 [
-  { "id": 1, "titulo": "Los juegos del hambre", "formato": "Libro", "anio": 2008, "universoId": 1, "fidelity": null },
-  { "id": 2, "titulo": "En llamas", "formato": "Libro", "anio": 2009, "universoId": 1, "fidelity": null },
-  { "id": 3, "titulo": "Sinsajo", "formato": "Libro", "anio": 2010, "universoId": 1, "fidelity": null },
-  { "id": 4, "titulo": "Los juegos del hambre", "formato": "Película", "anio": 2012, "universoId": 1, "fidelity": 82 },
-  { "id": 5, "titulo": "En llamas", "formato": "Película", "anio": 2013, "universoId": 1, "fidelity": 88 },
-  { "id": 6, "titulo": "Balada de pájaros cantores y serpientes", "formato": "Película", "anio": 2023, "universoId": 1, "fidelity": 75 },
-  { "id": 7, "titulo": "La piedra filosofal", "formato": "Libro", "anio": 1997, "universoId": 2, "fidelity": null },
-  { "id": 8, "titulo": "El prisionero de Azkaban", "formato": "Libro", "anio": 1999, "universoId": 2, "fidelity": null },
-  { "id": 9, "titulo": "El prisionero de Azkaban", "formato": "Película", "anio": 2004, "universoId": 2, "fidelity": 71 },
-  { "id": 10, "titulo": "Harry Potter", "formato": "Serie", "anio": 2027, "universoId": 2, "fidelity": null },
-  { "id": 11, "titulo": "Dune", "formato": "Libro", "anio": 1965, "universoId": 3, "fidelity": null },
-  { "id": 12, "titulo": "Dune", "formato": "Película", "anio": 2021, "universoId": 3, "fidelity": 84 },
-  { "id": 13, "titulo": "Dune: Prophecy", "formato": "Serie", "anio": 2024, "universoId": 3, "fidelity": 63 }
+  {
+    "id": 2,
+    "titulo": "En llamas",
+    "formato": "Libro",
+    "anio": 2009,
+    "universoId": 1,
+    "fidelity": null,
+    "progreso": 60
+  },
+  {
+    "id": 9,
+    "titulo": "El prisionero de Azkaban",
+    "formato": "Película",
+    "anio": 2004,
+    "universoId": 2,
+    "fidelity": 71,
+    "progreso": 30
+  },
+  {
+    "id": 11,
+    "titulo": "Dune",
+    "formato": "Libro",
+    "anio": 1965,
+    "universoId": 3,
+    "fidelity": null,
+    "progreso": 15
+  }
 ]
