@@ -4,6 +4,7 @@ import './UniversePage.css'
 
 import UNIVERSOS from '../data/universos.json'
 import OBRAS from '../data/obras.json'
+import WorkCard from '../components/molecules/WorkCard'
 
 import { obtenerObrasPorUniverso } from '../utils/universos'
 
@@ -97,30 +98,11 @@ function UniversePage({ universeId }) {
         <div className="universe-list">
 
           {filteredWorks.map((work, index) => (
-
-            <article
-              className="universe-card"
+            <WorkCard
               key={work.id}
-            >
-
-              <div className="universe-card__thumbnail" />
-
-              <div className="universe-card__content">
-
-                <h3 className="universe-card__title">
-                  {work.titulo}
-                </h3>
-
-                <div className="universe-card__metadata">
-                  <span>{index + 1}</span>
-                  <span>·</span>
-                  <span>{work.anio}</span>
-                </div>
-
-              </div>
-
-            </article>
-
+              work={work}
+              index={index}
+            />
           ))}
 
           {filteredWorks.length === 0 && (
