@@ -7,12 +7,23 @@ import BottomNavigation from './components/navigation/BottomNavigation'
 
 function App() {
   const [current, setCurrent] = useState('home')
+  const [selectedUniverse, setSelectedUniverse] = useState(null)
+
+  // Navegar a un universo concreto.
+  function handleNavigate(universeId) {
+    setSelectedUniverse(universeId)
+    setCurrent('universes')
+  }
 
   return (
     <>
-      {current === 'home' && <Home onNavigate={setCurrent} />}
+      {current === 'home' && (
+        <Home onNavigate={handleNavigate} />
+      )}
 
-      {current === 'universes' && <UniversePage />}
+      {current === 'universes' && (
+        <UniversePage universeId={selectedUniverse} />
+      )}
 
       <BottomNavigation
         current={current}
