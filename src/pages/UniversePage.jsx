@@ -5,6 +5,7 @@ import './UniversePage.css'
 import UNIVERSOS from '../data/universos.json'
 import OBRAS from '../data/obras.json'
 import WorkCard from '../components/molecules/WorkCard'
+import FilterChip from '../components/atoms/FilterChip'
 
 import { obtenerObrasPorUniverso } from '../utils/universos'
 
@@ -59,40 +60,26 @@ function UniversePage({ universeId }) {
         {/* Filtros por formato */}
         <div className="universe-filters">
 
-          <button
-            className={
-              format === 'all'
-                ? 'universe-chip active'
-                : 'universe-chip'
-            }
+          <FilterChip
+            label="All"
+            active={format === 'all'}
             onClick={() => setFormat('all')}
-          >
-            All
-          </button>
+          />
 
-          <button
-            className={
-              format === 'book'
-                ? 'universe-chip active'
-                : 'universe-chip'
-            }
+          <FilterChip
+            label={`${booksCount} books`}
+            active={format === 'book'}
             onClick={() => setFormat('book')}
-          >
-            {booksCount} books
-          </button>
+          />
 
-          <button
-            className={
-              format === 'movie'
-                ? 'universe-chip active'
-                : 'universe-chip'
-            }
+          <FilterChip
+            label={`${moviesCount} movies`}
+            active={format === 'movie'}
             onClick={() => setFormat('movie')}
-          >
-            {moviesCount} movies
-          </button>
+          />
 
         </div>
+
 
         {/* Lista de obras */}
         <div className="universe-list">
