@@ -33,10 +33,14 @@ UNIVERSOS ──(obras / universoId)── OBRAS
 | Propiedad | Tipo | Ejemplo | Qué es |
 |---|---|---|---|
 | `id` | número | `2` | Identificador único |
-| `nombre` | texto | `"Harry Potter"` | Nombre del universo |
+| `nombre` | texto | `Harry Potter` | Nombre del universo |
+| `title`| texto | `Harry Potter` | Título del universo |
 | `descripcion` | texto | `"El mundo mágico en papel, en el cine y en la escena."` | Frase que lo presenta |
 | `color` | texto (hex) | `"#4B3A8C"` | Color propio del universo |
 | `obras` | lista de números | `[7, 8, 9, 10]` | `id` de las obras de este universo (`OBRAS.id`) |
+| `generes`| lista de strings | [`Fantasy`, `Adventure`, `Magic`] | Géneros que incluye este universo |
+| `featured`| bool | true | Si el universo aparece como destacado o no |
+| `isFavorite` | bool | false | Si está añadido a favoritos o no |
 
 `obras` es un array de `id` de obras que pertenecen a este universo.
 
@@ -44,11 +48,17 @@ UNIVERSOS ──(obras / universoId)── OBRAS
 
 ```json
 {
-  "id": 2,
-  "nombre": "Harry Potter",
-  "descripcion": "El mundo mágico en papel, en el cine y en la escena.",
-  "color": "#4B3A8C",
-  "obras": [7, 8, 9, 10]
+  "id": 1,
+  "nombre": "Los juegos del hambre",
+  "title": "The Hunger Games",
+  "author": "Suzanne Collins",
+  "descripcion": "Panem, los distritos y los Juegos: los libros y su salto al cine.",
+  "color": "#7A2E2E",
+  "cover": "/images/universes/hunger-games.jpg",
+  "obras": [1, 2, 3, 4, 5, 6],
+  "genres": ["Dystopian", "Sci-fi", "Action"],
+  "featured": true,
+  "isFavorite": false
 }
 ```
 
@@ -66,17 +76,19 @@ UNIVERSOS ──(obras / universoId)── OBRAS
 | `anio` | número | `2013` | Año de publicación o estreno |
 | `universoId` | número | `1` | Universo al que pertenece (`UNIVERSOS.id`) |
 | `fidelity` | número o `null` | `88` | Mide el nivel de fidelidad. Es `null` en los libros y en las obras sin valorar |
+| `progreso`| número | 34 | Porcentaje de visualizado de la obra |
 
 **Ejemplo:**
 
 ```json
 {
-  "id": 5,
-  "titulo": "En llamas",
-  "formato": "Película",
-  "anio": 2013,
-  "universoId": 1,
-  "fidelity": 88
+  "id": 11,
+  "titulo": "Dune",
+  "formato": "Libro",
+  "anio": 1965,
+  "universoId": 3,
+  "fidelity": null,
+  "progreso": 15
 }
 ```
 

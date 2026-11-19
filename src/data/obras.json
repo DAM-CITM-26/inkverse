@@ -1,6 +1,15 @@
 
 [
   {
+    "id": 1,
+    "titulo": "Los juegos del hambre",
+    "formato": "Libro",
+    "anio": 2008,
+    "universoId": 1,
+    "fidelity": null,
+    "progreso": 0
+  },
+  {
     "id": 2,
     "titulo": "En llamas",
     "formato": "Libro",
@@ -8,6 +17,51 @@
     "universoId": 1,
     "fidelity": null,
     "progreso": 60
+  },
+  {
+    "id": 3,
+    "titulo": "Sinsajo",
+    "formato": "Libro",
+    "anio": 2010,
+    "universoId": 1,
+    "fidelity": null,
+    "progreso": 0
+  },
+  {
+    "id": 4,
+    "titulo": "Los juegos del hambre",
+    "formato": "Película",
+    "anio": 2012,
+    "universoId": 1,
+    "fidelity": 85,
+    "progreso": 0
+  },
+  {
+    "id": 5,
+    "titulo": "En llamas",
+    "formato": "Película",
+    "anio": 2013,
+    "universoId": 1,
+    "fidelity": 88,
+    "progreso": 0
+  },
+  {
+    "id": 6,
+    "titulo": "Sinsajo - Parte 1",
+    "formato": "Película",
+    "anio": 2014,
+    "universoId": 1,
+    "fidelity": 80,
+    "progreso": 0
+  },
+  {
+    "id": 14,
+    "titulo": "Sinsajo - Parte 2",
+    "formato": "Película",
+    "anio": 2015,
+    "universoId": 1,
+    "fidelity": 82,
+    "progreso": 0
   },
   {
     "id": 9,
