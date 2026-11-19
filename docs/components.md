@@ -1,197 +1,140 @@
-
 # Inkverse — Component Map
 
 ## 1. Objective
 
-This document defines the component structure of Inkverse based on the Figma designs and the exported component metadata.
+This document describes the current component structure of Inkverse based on its React implementation.
 
-The goal is to identify reusable components, their variants and how they are organized within the application.
+The goal is to identify the components currently implemented, their responsibilities and how they are organized within the application.
 
-The exported Figma metadata is available in `wireframe-all.md`.
+It also documents the components that are planned for future refactoring.
 
 ---
 
 ## 2. Component hierarchy
 
-Inkverse is organized into pages, sections and reusable components.
+Inkverse is organized into pages and reusable components.
 
 ### Main application
 
 - `App`
-  - `Header`
-  - `Page`
+  - `Home`
+  - `UniversePage`
   - `BottomNavigation`
-  - `OverlayContainer`
 
 ### Home page
 
-- `HomePage`
+- `Home`
+  - `Logo`
+  - `HomeHero`
   - `SectionHeading`
-  - `StatusCard`
-  - `UniverseCard`
-  - `WorkCard`
-  - `BottomNavigation`
-
----
-
-## 3. Reusable components
-
-### 3.1. Navigation
-
-| Component | Description | Variants / Properties |
-|---|---|---|
-| `BottomNavigation` | Main navigation bar with five destinations. | Home, Discovery, Universes, Library, Profile. Each destination has selected and unselected states. |
-| `NavigationIcon` | Icon representing a navigation destination. | Selected / Unselected. |
-| `SectionHeading` | Section title. A chevron (`>`) indicates that the section can be opened to access another page. Without a chevron, the heading is static. | With chevron / Without chevron. |
-
-The BottomNavigation uses the same five icons throughout the application. Only the selected state changes depending on the current page.
-
-### 3.2. Cards
-
-| Component | Description | Variants / Properties |
-|---|---|---|
-| `StatusCard` | Displays a work that the user is currently reading or watching, including its cover, title, format, status and progress. | Default / Clicked. |
-| `UniverseCard` | Displays a universe with its thumbnail, title, number of works and number of formats. | Default / Pressed. |
-| `WorkCard` | Displays an individual book, movie or series. | Default / Pressed. |
-| `ListCard` | Displays an item in a list with its title and thumbnail. | Default / Pressed. |
-| `SavedUniverseCard` | Displays a saved universe. | Favorite state. |
-
-### 3.3. Reviews and comments
-
-| Component | Description | Variants / Properties |
-|---|---|---|
-| `ReviewCard` | Displays a user's review, profile image, rating and comment. | Visible / Spoiler. |
-| `StarRating` | Displays a rating using stars. | Empty / 1–5 stars. |
-| `UserAvatar` | Displays the user's profile picture. | Image instance. |
-| `RevealReviewButton` | Allows the user to reveal a review hidden because it contains spoilers. | Default. |
-
-### 3.4. Labels and controls
-
-| Component | Description | Variants / Properties |
-|---|---|---|
-| `GenreChip` | Displays a genre label. | Default / Fantasy. |
-| `FormatChip` | Identifies the format of a work. | Book / Movie. |
-| `StatusChip` | Displays the user's progress status for a work. | Want / In progress / Finished / Paused / Dropped. |
-| `FidelityChip` | Displays information about the fidelity of an adaptation. | Original / Score variants. |
-| `RouteSelector` | Allows the user to select the order in which works are displayed. | Chronological / Recommended / Published. |
-| `FidelityToggle` | Allows the user to activate or deactivate fidelity information. | On / Off. |
-| `StatusTabs` | Filters works according to their status. | All / Want / In progress / Finished / Paused / Dropped. |
-| `FormatTabs` | Filters works according to their format. | All / Books / Movies / Series. |
-
-### 3.5. Basic elements
-
-| Component | Description | Variants / Properties |
-|---|---|---|
-| `Thumbnail` | Reusable image element used in cards and lists. | Different image instances, such as Prisoner of Azkaban, Dune and His Dark Materials. |
-| `Button` | Reusable interactive button. | Depends on its use. |
-| `Icon` | Reusable icon element. | Different icon instances. |
-| `ProgressBar` | Represents the user's progress through a work. | Progress value. |
-| `Badge` | Displays a short label or status. | Original / Finished / In progress / Fidelity. |
-
----
-
-## 4. Home page component structure
-
-The Home page is composed of the following elements, in order:
-
-- `HomePage`
-  - `PrimaryLogo`
-  - `HeroSection`
-  - `ContinueSection`
-    - `SectionHeading`
     - `StatusCard`
-      - `Thumbnail`
-      - `FormatChip`
-  - `RecommendedSection`
-    - `SectionHeading`
-    - `UniverseCard`
-      - `Thumbnail`
-  - `ReviewsSection`
-    - `SectionHeading`
-    - `Comment`
-      - `UserAvatar`
-      - `StarRating`
-      - `RevealReviewButton` (when the comment contains spoilers)
-  - `BottomNavigation`
+  - `SectionHeading`
+    - `FeaturedUniverse`
+  - `SectionHeading`
+    - `ReviewCard`
 
-### Home page components
+### Universe page
+
+- `UniversePage`
+  - `UniverseHeader` (not yet extracted)
+  - `UniverseFilters` (not yet extracted)
+    - `FilterChip`
+  - `UniverseWorksList` (not yet extracted)
+    - `WorkCard`
+
+---
+
+## 3. Implemented reusable components
+
+### 3.1. Atoms
 
 | Component | Description | Properties / Variants |
 |---|---|---|
-| `PrimaryLogo` | Main Inkverse logo displayed at the top of Home. | One fixed version, no variants. |
-| `HeroSection` | Main introductory or welcome section of Home. | One version, no variants. |
-| `SectionHeading` | Section title. A chevron (`>`) indicates that the section can be opened to access another page. Without a chevron, the heading is static. | With chevron / Without chevron. |
-| `StatusCard` | Displays a work that the user is currently reading or watching, including its thumbnail, title, format and progress. | Default / Clicked. |
-| `UniverseCard` | Displays a fictional universe with its thumbnail, title, number of works and number of formats. | Default / Pressed. |
-| `Comment` | Displays a user's comment or review, including their profile picture, rating and text. | Default / Spoiler alert / Spoiler revealed. |
-| `StarRating` | Displays the rating associated with a comment. | Empty / 1–5 stars. |
-| `UserAvatar` | Displays the profile picture of the comment author. | Image instance. |
-| `BottomNavigation` | Main navigation bar with five destinations. Each destination has selected and unselected states. | Home / Discover / Universes / Library / Profile. |
+| `Logo` | Displays the Inkverse logo. | Fixed logo. |
+| `FilterChip` | Reusable filter button with active and inactive states. | Label / Active / Inactive. |
+| `NavigationIcon` | Displays an icon representing a navigation destination. | Selected / Unselected. |
 
-### Card structure
+### 3.2. Molecules
 
-**StatusCard**
-- Thumbnail
-- Title
-- Progress
-- Format
+| Component | Description | Properties / Variants |
+|---|---|---|
+| `HomeHero` | Displays the main introductory section of the Home page, including its title and subtitle. | Title / Subtitle. |
+| `StatusCard` | Displays a work that the user is currently reading or watching, including its title, format and progress. | Work information / Progress. |
+| `UniverseCard` | Displays a universe with its thumbnail, title, number of works and number of formats. | Universe information. |
+| `FeaturedUniverse` | Displays a featured universe banner with its cover, title, author, genres and available formats. Includes a favourite button and navigation interaction. | Favourite / Not favourite. |
+| `ReviewCard` | Displays a community review. | Review data. |
+| `WorkCard` | Displays an individual work within a universe, including its title, year and thumbnail. | Work information. |
 
-**UniverseCard**
-- Thumbnail
-- Title
-- Number of works
-- Number of formats
+### 3.3. Navigation and layout components
 
-### Comment structure
+| Component | Description | Properties / Variants |
+|---|---|---|
+| `SectionHeading` | Displays a section title and renders a list of cards according to the component type received. | Title / Data / Navigation callback. |
+| `BottomNavigation` | Main navigation bar with five destinations. | Home / Discovery / Universes / Library / Profile. |
 
-**Comment**
-- Username
-- User profile picture (`UserAvatar`)
-- Rating (`StarRating`)
-- Comment text
-- Revealed text (when spoilers are hidden)
-- Spoiler warning and reveal interaction when applicable.
+The `BottomNavigation` uses the same navigation structure throughout the application. The selected state changes according to the current page.
 
-The Home page uses the following components:
+`SectionHeading` uses a component registry to determine which card component should be rendered for each data type.
 
-- `HomePage`
-  - `Header`
-  - `ContinueSection`
+---
+
+## 4. Page component structure
+
+### 4.1. Home page
+
+The Home page is composed of the following elements:
+
+- `Home`
+  - `Logo`
+  - `HomeHero`
+  - Continue Reading section
     - `SectionHeading`
     - `StatusCard`
-      - `Thumbnail`
-      - `StatusChip`
-      - `ProgressBar`
-  - `RecommendedSection`
+  - Featured Universe section
     - `SectionHeading`
-    - `UniverseCard`
-      - `Thumbnail`
-  - `BottomNavigation`
+    - `FeaturedUniverse`
+  - Reviews section
+    - `SectionHeading`
+    - `ReviewCard`
 
-### Card differences
+#### Home page components
 
-**StatusCard**
+| Component | Description | Properties |
+|---|---|---|
+| `Logo` | Main Inkverse logo displayed at the top of Home. | Fixed logo. |
+| `HomeHero` | Introductory section with a main title and subtitle. | Title / Subtitle. |
+| `StatusCard` | Displays a work that the user has started reading or watching. | Title / Format / Progress. |
+| `FeaturedUniverse` | Highlights a selected fictional universe. | Title / Author / Cover / Genres / Formats / Favourite state. |
+| `ReviewCard` | Displays a community review. | Review data. |
+| `SectionHeading` | Organizes and displays the title and content of each Home section. | Title / Data. |
 
-Displays an individual work that the user is reading or watching.
+### 4.2. Universe page
 
-Information:
-- Thumbnail
-- Work title
-- Format
-- Current status
-- Progress percentage
-- Navigation chevron
+The Universe page displays the information and works belonging to a selected fictional universe.
 
-**UniverseCard**
+Its current structure is:
 
-Displays a fictional universe and its available content.
+- `UniversePage`
+  - Universe header
+    - Universe title
+    - Author
+  - Format filters
+    - `FilterChip` — All
+    - `FilterChip` — Books
+    - `FilterChip` — Movies
+  - Works list
+    - `WorkCard`
+  - Empty state message (currently implemented directly in the page)
 
-Information:
-- Thumbnail
-- Universe title
-- Number of works
-- Number of formats
-- Navigation chevron
+The page retrieves the selected universe and its associated works from the local JSON data.
+
+#### Universe page functionality
+
+- Displays the selected universe's title and author.
+- Counts the available books and movies.
+- Filters works by format.
+- Displays the corresponding works.
+- Shows a message when no works are available for the selected format.
 
 ---
 
@@ -199,43 +142,67 @@ Information:
 
 ```mermaid
 flowchart TD
-    App --> HomePage
+    App --> Home
+    App --> UniversePage
     App --> BottomNavigation
 
-    HomePage --> PrimaryLogo
-    HomePage --> HeroSection
-    HomePage --> ContinueSection
-    HomePage --> RecommendedSection
-    HomePage --> ReviewsSection
+    Home --> Logo
+    Home --> HomeHero
+    Home --> ContinueSection
+    Home --> FeaturedSection
+    Home --> ReviewsSection
 
     ContinueSection --> SectionHeading
     ContinueSection --> StatusCard
-    StatusCard --> Thumbnail
-    StatusCard --> FormatChip
 
-    RecommendedSection --> SectionHeading
-    RecommendedSection --> UniverseCard
-    UniverseCard --> Thumbnail
+    FeaturedSection --> SectionHeading
+    FeaturedSection --> FeaturedUniverse
 
     ReviewsSection --> SectionHeading
-    ReviewsSection --> Comment
-    Comment --> UserAvatar
-    Comment --> StarRating
-    Comment --> RevealReviewButton
+    ReviewsSection --> ReviewCard
+
+    UniversePage --> UniverseHeader
+    UniversePage --> UniverseFilters
+    UniversePage --> UniverseWorksList
+
+    UniverseFilters --> FilterChip
+    UniverseWorksList --> WorkCard
 
     BottomNavigation --> NavigationIcon
 ```
 
+Note: `UniverseHeader`, `UniverseFilters` and `UniverseWorksList` are logical sections currently implemented directly inside `UniversePage`, not independent React components yet.
+
 ---
 
-## 6. Notes and implementation considerations
+## 6. Components pending further decomposition
 
-- Components should be reusable across different pages.
-- Variants represent different visual or interaction states of the same component.
-- `Thumbnail` is a reusable image element, not a separate card.
-- `StarRating` and `UserAvatar` are elements used inside review and comment components.
-- `GenreChip` represents a genre label and can be reused wherever genres are displayed.
-- The five BottomNavigation destinations share the same navigation structure. The active icon changes according to the current page.
-- A `SectionHeading` with a chevron indicates navigation to another page. A heading without a chevron is static.
-- The component structure may evolve as additional screens and functionality are implemented.
-- The original Figma export is kept separately in `wireframe-all.md` as a reference.
+The current implementation is functional, but some page sections still contain code that could be extracted into reusable components.
+
+The following components are planned for future refactoring:
+
+| Planned component | Description | Current implementation |
+|---|---|---|
+| `UniverseHeader` | Groups the universe title, author, description and cover. | Currently inside `UniversePage`. |
+| `UniverseFilters` | Groups the format filters and their counters. | Currently inside `UniversePage`, using `FilterChip`. |
+| `UniverseWorksList` | Manages the list of works and renders `WorkCard` components. | Currently inside `UniversePage`. |
+| `EmptyState` | Reusable component for displaying empty lists or unavailable content. | Currently implemented directly inside `UniversePage`. |
+| `ProgressBar` | Reusable visual representation of reading or watching progress. | Currently part of `StatusCard`. |
+| `ReviewMetadata` | Groups review-related metadata, such as author, rating and date, if required by the final review design. | Not yet extracted. |
+
+These components will be implemented progressively as part of the ongoing component refactoring process.
+
+---
+
+## 7. Notes and implementation considerations
+
+- Components should be reusable whenever the same functionality or visual structure appears in multiple places.
+- Components should have a clear and independent responsibility.
+- Page components should primarily manage data, state and the composition of other components.
+- `SectionHeading` uses a registry to connect data types with their corresponding card components.
+- `FilterChip` is reusable and receives its label, active state and click handler through props.
+- `WorkCard` receives a work object and its position in the list through props.
+- Local JSON files provide the data used by Home and UniversePage.
+- Component names and responsibilities may evolve as additional functionality is implemented.
+
+**Implementation status:** The current component structure is still evolving. Some sections of the pages have not yet been extracted into independent components, as described in Section 6.
