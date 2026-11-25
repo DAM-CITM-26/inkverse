@@ -7,53 +7,16 @@ import UNIVERSOS from '../data/universos.json'
 import OBRAS from '../data/obras.json'
 import RESENAS from '../data/resenas.json'
 
-import { obtenerObrasEnCurso } from '../utils/obras'
 import {
-  obtenerObrasPorUniverso,
-  obtenerFormatos
-} from '../utils/universos'
+  prepararObrasEnCurso,
+  prepararUniversosDestacados
+} from '../utils/home'
 
 function Home({ onNavigate }) {
 
-  // Obras que el usuario tiene empezadas.
-  const continueReading = obtenerObrasEnCurso(OBRAS)
-    .map((obra) => ({
-      id: obra.id,
-      type: 'continueReading',
-      props: {
-        title: obra.titulo,
-        type: obra.formato === 'Libro' ? 'Book' : 'Movie',
-        progress: obra.progreso
-      }
-    }))
-
-  // Universos destacados.
-  const featuredUniverses = UNIVERSOS
-    .filter((universo) => universo.featured)
-    .map((universo) => {
-
-      // Obtenemos las obras del universo.
-      const obrasUniverso = obtenerObrasPorUniverso(
-        universo,
-        OBRAS
-      )
-
-      // Calculamos los formatos diferentes.
-      const formatsCount = obtenerFormatos(obrasUniverso).length
-
-      return {
-        id: universo.id,
-        type: 'featuredUniverse',
-        props: {
-          title: universo.title,
-          author: universo.author,
-          formatsCount,
-          genres: universo.genres,
-          cover: universo.cover,
-          isFavorite: universo.isFavorite
-        }
-      }
-    })
+  // Preparamos los datos que necesita la página.
+  const continueReading = prepararObrasEnCurso(OBRAS)
+  const featuredUniverses = prepararUniversosDestacados(UNIVERSOS, OBRAS)
 
   return (
     <main className="home">
