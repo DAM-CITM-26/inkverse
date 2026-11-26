@@ -150,17 +150,17 @@ Cada reseña utiliza la estructura `id`, `type`, `obraId` y `props`.
 
 ```json
 {
-  "id": 2,
-  "type": "review",
-  "obraId": 5,
-  "props": {
-    "username": "panem_fan",
-    "rating": 4,
-    "text": "La fotografía es preciosa y la banda sonora acompaña muy bien.",
-    "userImage": "/images/pfp/lunareader-pfp.jpg",
-    "spoiler": false,
-    "spoilerText": ""
-  }
+  "id": 1,
+    "type": "review",
+    "obraId": 5,
+    "props": {
+      "username": "lunareader",
+      "rating": 5,
+      "text": "La arena giratoria está igual que en el libro, y el final del vasallaje te deja sin aire.",
+      "userImage": "/images/pfp/lunareader-pfp.jpg",
+      "spoiler": true,
+      "spoilerText": "El desenlace del vasallaje y sus consecuencias son realmente impactantes."
+    }
 }
 ```
 
