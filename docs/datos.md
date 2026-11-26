@@ -157,6 +157,7 @@ Cada reseña utiliza la estructura `id`, `type`, `obraId` y `props`.
     "username": "panem_fan",
     "rating": 4,
     "text": "La fotografía es preciosa y la banda sonora acompaña muy bien.",
+    "userImage": "/images/pfp/lunareader-pfp.jpg",
     "spoiler": false,
     "spoilerText": ""
   }
