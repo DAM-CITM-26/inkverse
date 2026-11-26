@@ -34,11 +34,13 @@ UNIVERSOS ──(obras / universoId)── OBRAS
 |---|---|---|---|
 | `id` | número | `2` | Identificador único |
 | `nombre` | texto | `Harry Potter` | Nombre del universo |
-| `title`| texto | `Harry Potter` | Título del universo |
+| `title`| texto | `Harry Potter` | Título del universo en su idioma original |
+| `author`| texto | `J.K. Rowling` | Nombre del autor del universo
 | `descripcion` | texto | `"El mundo mágico en papel, en el cine y en la escena."` | Frase que lo presenta |
 | `color` | texto (hex) | `"#4B3A8C"` | Color propio del universo |
+| `cover` | texto | `images/universes/harry-potter.jpg` | Ruta al archivo de la carátula del universo |
 | `obras` | lista de números | `[7, 8, 9, 10]` | `id` de las obras de este universo (`OBRAS.id`) |
-| `generes`| lista de strings | [`Fantasy`, `Adventure`, `Magic`] | Géneros que incluye este universo |
+| `genres`| lista de strings | [`Fantasy`, `Adventure`, `Magic`] | Géneros que incluye este universo |
 | `featured`| bool | true | Si el universo aparece como destacado o no |
 | `isFavorite` | bool | false | Si está añadido a favoritos o no |
 
