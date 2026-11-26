@@ -205,6 +205,16 @@ main {
   stroke-width: 0.95;
 }
 
+.nav-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.nav-link-activo {
+  color: inherit;
+  text-decoration: none;
+}
+
 .pestanas .activa .nav-icon {
   background: var(--color-primario);
   color: var(--color-sobre-primario);
