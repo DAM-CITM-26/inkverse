@@ -109,7 +109,7 @@ Cada elemento utiliza la estructura `id`, `type` y `props`, además de `obraId` 
 | `obraId` | número | `2` | Obra empezada (`OBRAS.id`) |
 | `props` | objeto | `{...}` | Propiedades que recibe StatusCard |
 | `props.title` | texto | `"En llamas"` | Título que se muestra |
-| `props.type` | texto | `"Book"` | Formato mostrado: `"Book"`, `"Movie"` o `"Series"` |
+| `props.formato` | texto | `"Libro"` | Formato mostrado: `"Libro"`, `"Película"` o `"Series"` |
 | `props.progress` | número | `60` | Porcentaje avanzado, de 0 a 100 |
 
 **Ejemplo:**
@@ -121,7 +121,7 @@ Cada elemento utiliza la estructura `id`, `type` y `props`, además de `obraId` 
   "obraId": 2,
   "props": {
     "title": "En llamas",
-    "type": "Book",
+    "formato": "Libro",
     "progress": 60
   }
 }
