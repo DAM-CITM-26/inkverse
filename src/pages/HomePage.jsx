@@ -2,6 +2,7 @@
 import Logo from '../components/atoms/Logo'
 import HomeHero from '../components/molecules/HomeHero'
 import SectionHeading from '../components/navigation/SectionHeading'
+import { useNavigate } from 'react-router-dom'
 
 import UNIVERSOS from '../data/universos.json'
 import OBRAS from '../data/obras.json'
@@ -12,7 +13,12 @@ import {
   prepararUniversosDestacados
 } from '../utils/home'
 
-function Home({ onNavigate }) {
+function HomePage() {
+  const navigate = useNavigate()
+
+  const handleNavigate = (id) => {
+    navigate(`/universe/${id}`)
+  }
 
   // Preparamos los datos que necesita la página.
   const continueReading = prepararObrasEnCurso(OBRAS)
@@ -42,9 +48,8 @@ function Home({ onNavigate }) {
         <SectionHeading
           title="Featured Universe"
           data={featuredUniverses}
-          onNavigate={onNavigate}
+          onNavigate={handleNavigate}
         />
-
         {/* Reseñas de la comunidad */}
         <SectionHeading
           title="Reviews"
@@ -56,4 +61,4 @@ function Home({ onNavigate }) {
   )
 }
 
-export default Home
+export default HomePage

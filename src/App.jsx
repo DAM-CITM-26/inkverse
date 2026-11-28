@@ -10,25 +10,22 @@ function App() {
     <BrowserRouter>
       <Routes>
 
-        {/* Páginas con navegación inferior */}
         <Route element={<MainLayout />}>
-          <Route path="/" element={<HomePage />} />
 
-          {/* Rutas pendientes de implementar */}
+          {/* Pantallas principales */}
+          <Route path="/" element={<HomePage />} />
           <Route path="/discover" element={<p>Discovery</p>} />
           <Route path="/universes" element={<p>My Universes</p>} />
           <Route path="/library" element={<p>My Library</p>} />
           <Route path="/profile" element={<p>Profile</p>} />
           <Route path="/profile/notifications" element={<p>Notifications</p>} />
+
+          {/* Pantallas de detalle */}
+          <Route path="/universe/:id" element={<UniversePage />} />
+          <Route path="/work/:id" element={<p>Work detail</p>} />
+          <Route path="*" element={<p>Page not found</p>} />
+
         </Route>
-
-        {/* Detalles */}
-        <Route path="/universe/:id" element={<UniversePage />} />
-        <Route path="/work/:id" element={<p>Work detail</p>} />
-
-        {/* Ruta desconocida */}
-        <Route path="*" element={<p>Page not found</p>} />
-
       </Routes>
     </BrowserRouter>
   )
