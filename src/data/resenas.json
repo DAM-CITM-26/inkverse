@@ -49,5 +49,30 @@
       "spoiler": false,
       "spoilerText": ""
     }
+  },
+  {
+    "id": 5,
+    "type": "review",
+    "obraId": 4,
+    "props": {
+      "username": "potterhead",
+      "rating": 4,
+      "text": "Las adaptaciones de libros de hoy en día ya no son tan precisas",
+      "userImage": "/images/pfp/mia-pfp.jpg",
+      "spoiler": false,
+      "spoilerText": ""
+    }
+  },
+  {
+    "id": 6,
+    "type": "review",
+    "obraId": 4,
+    "props": {
+      "username": "gabby",
+      "rating": 3,
+      "text": "Book to movie adaptations never quite convinced me",
+      "spoiler": false,
+      "spoilerText": "Peeta cosplaying as a rock will never be funny to me"
+    }
   }
 ]

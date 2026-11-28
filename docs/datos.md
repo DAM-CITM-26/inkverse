@@ -77,7 +77,7 @@ UNIVERSOS ──(obras / universoId)── OBRAS
 | `formato` | texto | `"Película"` | Uno de: `"Libro"`, `"Película"`, `"Serie"` |
 | `anio` | número | `2013` | Año de publicación o estreno |
 | `universoId` | número | `1` | Universo al que pertenece (`UNIVERSOS.id`) |
-| `fidelity` | número o `null` | `88` | Mide el nivel de fidelidad. Es `null` en los libros y en las obras sin valorar |
+| `fidelity` | número o `null` | `88` | Mide el nivel de fidelidad. Es `null` en los libros y en las obras originales |
 | `progreso`| número | 34 | Porcentaje de visualizado de la obra |
 
 **Ejemplo:**
