@@ -77,7 +77,7 @@ UNIVERSOS ──(obras / universoId)── OBRAS
 | `format` | texto | `"Película"` | Uno de: `"Libro"`, `"Película"`, `"Serie"` |
 | `year` | número | `2013` | Año de publicación o estreno |
 | `universoId` | número | `1` | Universo al que pertenece (`UNIVERSOS.id`) |
-| `fidelity` | número o `null` | `88` | Mide el nivel de fidelidad. Es `null` en los libros y en las obras originales |
+| `fidelity` | número o `null` | `88` | En adaptaciones, mide el nivel de fidelidad respecto a la obra original (0-100). Es `null` en la obra original del universo, o para aquellas obras que no son adaptaciones |
 | `progress`| número | `60` | Porcentaje de visualizado de la obra |
 
 **Ejemplo:**
@@ -105,7 +105,7 @@ Cada elemento utiliza la estructura `id`, `type` y `props`, además de `obraId` 
 | Propiedad | Tipo | Ejemplo | Qué es |
 |---|---|---|---|
 | `id` | número | `1` | Identificador único del elemento |
-| `type` | texto | `"continueReading"` | Tipo de componente que se debe renderizar |
+| `type` | texto | `"StatusCard"` | Tipo de componente que se debe renderizar |
 | `obraId` | número | `2` | Obra empezada (`OBRAS.id`) |
 | `props` | objeto | `{...}` | Propiedades que recibe StatusCard |
 | `props.title` | texto | `"En llamas"` | Título que se muestra |
@@ -117,7 +117,7 @@ Cada elemento utiliza la estructura `id`, `type` y `props`, además de `obraId` 
 ```json
 {
   "id": 1,
-  "type": "continueReading",
+  "type": "StatusCard",
   "obraId": 2,
   "props": {
     "title": "En llamas",
@@ -142,7 +142,7 @@ Cada reseña utiliza la estructura `id`, `type`, `obraId` y `props`.
 | `obraId` | número | `5` | Obra reseñada (`OBRAS.id`) |
 | `props` | objeto | `{...}` | Propiedades que recibe ReviewCard |
 | `props.username` | texto | `"panem_fan"` | Nombre de usuario de quien escribe |
-| `props.rating` | número | `4` | Valoración de la obra |
+| `props.rating` | número | `4` | Valoración de la obra, del 1 al 5 |
 | `props.text` | texto | `"La fotografía es preciosa…"` | Contenido de la reseña |
 | `props.userImage` | texto o no definido | `"/images/pfp/mia-pfp.jpg"` | Ruta de la foto de perfil. Si no se indica, se utiliza la imagen predeterminada |
 | `props.spoiler` | booleano | `false` | Indica si la reseña contiene spoilers |
