@@ -37,6 +37,6 @@
     "obras": [11, 12, 13],
     "genres": ["Sci-fi", "Adventure", "Politics"],
     "featured": false,
-    "isFavorite": false
+    "isFavorite": true
   }
 ]
