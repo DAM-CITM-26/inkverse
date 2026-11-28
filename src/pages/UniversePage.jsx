@@ -1,5 +1,6 @@
 
 import { useState } from 'react'
+import { useParams } from 'react-router-dom'
 import './UniversePage.css'
 
 import UNIVERSOS from '../data/universos.json'
@@ -9,7 +10,9 @@ import FilterChip from '../components/atoms/FilterChip'
 
 import { obtenerObrasPorUniverso } from '../utils/universos'
 
-function UniversePage({ universeId }) {
+function UniversePage() {
+  const { id } = useParams()
+  const universeId = Number(id)
 
   const [format, setFormat] = useState('all')
 
@@ -18,9 +21,13 @@ function UniversePage({ universeId }) {
     (universo) => universo.id === universeId
   )
 
-  // Si no existe el universo, no mostramos la página.
+  // Si el universo no existe, mostramos un estado específico.
   if (!universe) {
-    return <p>Universe not found.</p>
+    return (
+      <main className="universe-page">
+        <p>Universe not found.</p>
+      </main>
+    )
   }
 
   // Obtenemos todas las obras de este universo.
