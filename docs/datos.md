@@ -33,10 +33,10 @@ UNIVERSOS ──(obras / universoId)── OBRAS
 | Propiedad | Tipo | Ejemplo | Qué es |
 |---|---|---|---|
 | `id` | número | `2` | Identificador único |
-| `nombre` | texto | `Harry Potter` | Nombre del universo |
+| `name` | texto | `Harry Potter` | Nombre del universo |
 | `title`| texto | `Harry Potter` | Título del universo en su idioma original |
 | `author`| texto | `J.K. Rowling` | Nombre del autor del universo
-| `descripcion` | texto | `"El mundo mágico en papel, en el cine y en la escena."` | Frase que lo presenta |
+| `description` | texto | `"El mundo mágico en papel, en el cine y en la escena."` | Frase que lo presenta |
 | `color` | texto (hex) | `"#4B3A8C"` | Color propio del universo |
 | `cover` | texto | `images/universes/harry-potter.jpg` | Ruta al archivo de la carátula del universo |
 | `obras` | lista de números | `[7, 8, 9, 10]` | `id` de las obras de este universo (`OBRAS.id`) |
@@ -51,10 +51,10 @@ UNIVERSOS ──(obras / universoId)── OBRAS
 ```json
 {
   "id": 1,
-  "nombre": "Los juegos del hambre",
+  "name": "Los juegos del hambre",
   "title": "The Hunger Games",
   "author": "Suzanne Collins",
-  "descripcion": "Panem, los distritos y los Juegos: los libros y su salto al cine.",
+  "description": "Panem, los distritos y los Juegos: los libros y su salto al cine.",
   "color": "#7A2E2E",
   "cover": "/images/universes/hunger-games.jpg",
   "obras": [1, 2, 3, 4, 5, 6],
@@ -73,24 +73,24 @@ UNIVERSOS ──(obras / universoId)── OBRAS
 | Propiedad | Tipo | Ejemplo | Qué es |
 |---|---|---|---|
 | `id` | número | `5` | Identificador único |
-| `titulo` | texto | `"En llamas"` | Título de la obra |
-| `formato` | texto | `"Película"` | Uno de: `"Libro"`, `"Película"`, `"Serie"` |
-| `anio` | número | `2013` | Año de publicación o estreno |
+| `title` | texto | `"En llamas"` | Título de la obra |
+| `format` | texto | `"Película"` | Uno de: `"Libro"`, `"Película"`, `"Serie"` |
+| `year` | número | `2013` | Año de publicación o estreno |
 | `universoId` | número | `1` | Universo al que pertenece (`UNIVERSOS.id`) |
 | `fidelity` | número o `null` | `88` | Mide el nivel de fidelidad. Es `null` en los libros y en las obras originales |
-| `progreso`| número | 34 | Porcentaje de visualizado de la obra |
+| `progress`| número | `60` | Porcentaje de visualizado de la obra |
 
 **Ejemplo:**
 
 ```json
 {
   "id": 11,
-  "titulo": "Dune",
-  "formato": "Libro",
-  "anio": 1965,
+  "title": "Dune",
+  "format": "Libro",
+  "year": 1965,
   "universoId": 3,
   "fidelity": null,
-  "progreso": 15
+  "progress": 15
 }
 ```
 
@@ -109,7 +109,7 @@ Cada elemento utiliza la estructura `id`, `type` y `props`, además de `obraId` 
 | `obraId` | número | `2` | Obra empezada (`OBRAS.id`) |
 | `props` | objeto | `{...}` | Propiedades que recibe StatusCard |
 | `props.title` | texto | `"En llamas"` | Título que se muestra |
-| `props.formato` | texto | `"Libro"` | Formato mostrado: `"Libro"`, `"Película"` o `"Series"` |
+| `props.format` | texto | `"Libro"` | Formato mostrado: `"Libro"`, `"Película"` o `"Serie"` |
 | `props.progress` | número | `60` | Porcentaje avanzado, de 0 a 100 |
 
 **Ejemplo:**
@@ -121,7 +121,7 @@ Cada elemento utiliza la estructura `id`, `type` y `props`, además de `obraId` 
   "obraId": 2,
   "props": {
     "title": "En llamas",
-    "formato": "Libro",
+    "format": "Libro",
     "progress": 60
   }
 }
@@ -167,5 +167,7 @@ Cada reseña utiliza la estructura `id`, `type`, `obraId` y `props`.
 ```
 
 `userImage` es opcional. Si no se proporciona, ReviewCard utiliza `/images/user-pfp.svg` como imagen predeterminada.
+
+Si `spoiler` es false, `spoilerText` simplemente estará vacío
 
 **Lo usan:** SectionHeading y ReviewCard.

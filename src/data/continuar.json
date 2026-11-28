@@ -5,7 +5,7 @@
         "obraId": 2,
         "props": {
             "title": "En llamas",
-            "formato": "Libro",
+            "format": "Libro",
             "progress": 60
         }
     },
@@ -16,8 +16,8 @@
     "obraId": 4,
     "props": {
         "title": "Los juegos del hambre",
-        "formato": "Película",
-        "progreso": 7
+        "format": "Película",
+        "progress": 7
         }
     },
     
@@ -27,8 +27,8 @@
     "obraId": 9,
     "props": {
         "title": "El prisionero de Azkaban",
-        "formato": "Película",
-        "progreso": 30
+        "format": "Película",
+        "progress": 30
         }
     },
 
@@ -38,8 +38,8 @@
     "obraId": 11,
     "props": {
         "title": "Dune",
-        "formato": "Libro",
-        "progreso": 15
+        "format": "Libro",
+        "progress": 15
         }
     }
 ]
