@@ -1,0 +1,45 @@
+[
+    {
+        "id": 1,
+        "type": "StatusCard",
+        "obraId": 2,
+        "props": {
+            "title": "En llamas",
+            "format": "Libro",
+            "progress": 60
+        }
+    },
+
+  {
+    "id": 2,
+    "type": "StatusCard",
+    "obraId": 4,
+    "props": {
+        "title": "Los juegos del hambre",
+        "format": "Película",
+        "progress": 7
+        }
+    },
+    
+  {
+    "id": 3,
+    "type": "StatusCard",
+    "obraId": 9,
+    "props": {
+        "title": "El prisionero de Azkaban",
+        "format": "Película",
+        "progress": 30
+        }
+    },
+
+{
+    "id": 4,
+    "type": "StatusCard",
+    "obraId": 11,
+    "props": {
+        "title": "Dune",
+        "format": "Libro",
+        "progress": 15
+        }
+    }
+]

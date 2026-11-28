@@ -33,12 +33,14 @@ UNIVERSOS ──(obras / universoId)── OBRAS
 | Propiedad | Tipo | Ejemplo | Qué es |
 |---|---|---|---|
 | `id` | número | `2` | Identificador único |
-| `nombre` | texto | `Harry Potter` | Nombre del universo |
-| `title`| texto | `Harry Potter` | Título del universo |
-| `descripcion` | texto | `"El mundo mágico en papel, en el cine y en la escena."` | Frase que lo presenta |
+| `name` | texto | `Harry Potter` | Nombre del universo |
+| `title`| texto | `Harry Potter` | Título del universo en su idioma original |
+| `author`| texto | `J.K. Rowling` | Nombre del autor del universo |
+| `description` | texto | `"El mundo mágico en papel, en el cine y en la escena."` | Frase que lo presenta |
 | `color` | texto (hex) | `"#4B3A8C"` | Color propio del universo |
+| `cover` | texto | `/images/universes/harry-potter.jpg` | Ruta al archivo de la carátula del universo |
 | `obras` | lista de números | `[7, 8, 9, 10]` | `id` de las obras de este universo (`OBRAS.id`) |
-| `generes`| lista de strings | [`Fantasy`, `Adventure`, `Magic`] | Géneros que incluye este universo |
+| `genres`| lista de strings | [`Fantasy`, `Adventure`, `Magic`] | Géneros que incluye este universo |
 | `featured`| bool | true | Si el universo aparece como destacado o no |
 | `isFavorite` | bool | false | Si está añadido a favoritos o no |
 
@@ -49,10 +51,10 @@ UNIVERSOS ──(obras / universoId)── OBRAS
 ```json
 {
   "id": 1,
-  "nombre": "Los juegos del hambre",
+  "name": "Los juegos del hambre",
   "title": "The Hunger Games",
   "author": "Suzanne Collins",
-  "descripcion": "Panem, los distritos y los Juegos: los libros y su salto al cine.",
+  "description": "Panem, los distritos y los Juegos: los libros y su salto al cine.",
   "color": "#7A2E2E",
   "cover": "/images/universes/hunger-games.jpg",
   "obras": [1, 2, 3, 4, 5, 6],
@@ -71,28 +73,28 @@ UNIVERSOS ──(obras / universoId)── OBRAS
 | Propiedad | Tipo | Ejemplo | Qué es |
 |---|---|---|---|
 | `id` | número | `5` | Identificador único |
-| `titulo` | texto | `"En llamas"` | Título de la obra |
-| `formato` | texto | `"Película"` | Uno de: `"Libro"`, `"Película"`, `"Serie"` |
-| `anio` | número | `2013` | Año de publicación o estreno |
+| `title` | texto | `"En llamas"` | Título de la obra |
+| `format` | texto | `"Película"` | Uno de: `"Libro"`, `"Película"`, `"Serie"` |
+| `year` | número | `2013` | Año de publicación o estreno |
 | `universoId` | número | `1` | Universo al que pertenece (`UNIVERSOS.id`) |
-| `fidelity` | número o `null` | `88` | Mide el nivel de fidelidad. Es `null` en los libros y en las obras sin valorar |
-| `progreso`| número | 34 | Porcentaje de visualizado de la obra |
+| `fidelity` | número o `null` | `88` | En adaptaciones, mide el nivel de fidelidad respecto a la obra original (0-100). Es `null` en la obra original del universo, o para aquellas obras que no son adaptaciones |
+| `progress`| número | `60` | Porcentaje de visualizado de la obra |
 
 **Ejemplo:**
 
 ```json
 {
   "id": 11,
-  "titulo": "Dune",
-  "formato": "Libro",
-  "anio": 1965,
+  "title": "Dune",
+  "format": "Libro",
+  "year": 1965,
   "universoId": 3,
   "fidelity": null,
-  "progreso": 15
+  "progress": 15
 }
 ```
 
-**Lo usan:** UniversePage, FormatChip y otros componentes que muestran información de las obras.
+**Lo usan:** UniversePage, FormatChip, StatusCard, WorkCard y otros componentes que muestran información de las obras.
 
 ## CONTINUAR
 
@@ -103,11 +105,11 @@ Cada elemento utiliza la estructura `id`, `type` y `props`, además de `obraId` 
 | Propiedad | Tipo | Ejemplo | Qué es |
 |---|---|---|---|
 | `id` | número | `1` | Identificador único del elemento |
-| `type` | texto | `"continueReading"` | Tipo de componente que se debe renderizar |
+| `type` | texto | `"StatusCard"` | Tipo de componente que se debe renderizar |
 | `obraId` | número | `2` | Obra empezada (`OBRAS.id`) |
 | `props` | objeto | `{...}` | Propiedades que recibe StatusCard |
 | `props.title` | texto | `"En llamas"` | Título que se muestra |
-| `props.type` | texto | `"Book"` | Formato mostrado: `"Book"`, `"Movie"` o `"Series"` |
+| `props.format` | texto | `"Libro"` | Formato mostrado: `"Libro"`, `"Película"` o `"Serie"` |
 | `props.progress` | número | `60` | Porcentaje avanzado, de 0 a 100 |
 
 **Ejemplo:**
@@ -115,11 +117,11 @@ Cada elemento utiliza la estructura `id`, `type` y `props`, además de `obraId` 
 ```json
 {
   "id": 1,
-  "type": "continueReading",
+  "type": "StatusCard",
   "obraId": 2,
   "props": {
     "title": "En llamas",
-    "type": "Book",
+    "format": "Libro",
     "progress": 60
   }
 }
@@ -140,8 +142,8 @@ Cada reseña utiliza la estructura `id`, `type`, `obraId` y `props`.
 | `obraId` | número | `5` | Obra reseñada (`OBRAS.id`) |
 | `props` | objeto | `{...}` | Propiedades que recibe ReviewCard |
 | `props.username` | texto | `"panem_fan"` | Nombre de usuario de quien escribe |
-| `props.rating` | número | `4` | Valoración de la obra |
-| `props.text` | texto | `"La fotografía es preciosa…"` | Contenido de la reseña |
+| `props.rating` | número | `4` | Valoración de la obra, del 1 al 5 |
+| `props.text` | texto | `"La fotografía es preciosa…"` | Contenido de la reseña, se muestra siempre |
 | `props.userImage` | texto o no definido | `"/images/pfp/mia-pfp.jpg"` | Ruta de la foto de perfil. Si no se indica, se utiliza la imagen predeterminada |
 | `props.spoiler` | booleano | `false` | Indica si la reseña contiene spoilers |
 | `props.spoilerText` | texto | `""` | Texto que se muestra al revelar el spoiler |
@@ -150,19 +152,22 @@ Cada reseña utiliza la estructura `id`, `type`, `obraId` y `props`.
 
 ```json
 {
-  "id": 2,
-  "type": "review",
-  "obraId": 5,
-  "props": {
-    "username": "panem_fan",
-    "rating": 4,
-    "text": "La fotografía es preciosa y la banda sonora acompaña muy bien.",
-    "spoiler": false,
-    "spoilerText": ""
-  }
+  "id": 1,
+    "type": "review",
+    "obraId": 5,
+    "props": {
+      "username": "lunareader",
+      "rating": 5,
+      "text": "La arena giratoria está igual que en el libro, y el final del vasallaje te deja sin aire.",
+      "userImage": "/images/pfp/lunareader-pfp.jpg",
+      "spoiler": true,
+      "spoilerText": "El desenlace del vasallaje y sus consecuencias son realmente impactantes."
+    }
 }
 ```
 
 `userImage` es opcional. Si no se proporciona, ReviewCard utiliza `/images/user-pfp.svg` como imagen predeterminada.
+
+Si `spoiler` es false, `spoilerText` simplemente estará vacío
 
 **Lo usan:** SectionHeading y ReviewCard.
