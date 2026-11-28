@@ -35,10 +35,10 @@ UNIVERSOS ──(obras / universoId)── OBRAS
 | `id` | número | `2` | Identificador único |
 | `name` | texto | `Harry Potter` | Nombre del universo |
 | `title`| texto | `Harry Potter` | Título del universo en su idioma original |
-| `author`| texto | `J.K. Rowling` | Nombre del autor del universo
+| `author`| texto | `J.K. Rowling` | Nombre del autor del universo |
 | `description` | texto | `"El mundo mágico en papel, en el cine y en la escena."` | Frase que lo presenta |
 | `color` | texto (hex) | `"#4B3A8C"` | Color propio del universo |
-| `cover` | texto | `images/universes/harry-potter.jpg` | Ruta al archivo de la carátula del universo |
+| `cover` | texto | `/images/universes/harry-potter.jpg` | Ruta al archivo de la carátula del universo |
 | `obras` | lista de números | `[7, 8, 9, 10]` | `id` de las obras de este universo (`OBRAS.id`) |
 | `genres`| lista de strings | [`Fantasy`, `Adventure`, `Magic`] | Géneros que incluye este universo |
 | `featured`| bool | true | Si el universo aparece como destacado o no |
@@ -94,7 +94,7 @@ UNIVERSOS ──(obras / universoId)── OBRAS
 }
 ```
 
-**Lo usan:** UniversePage, FormatChip y otros componentes que muestran información de las obras.
+**Lo usan:** UniversePage, FormatChip, StatusCard, WorkCard y otros componentes que muestran información de las obras.
 
 ## CONTINUAR
 
@@ -143,7 +143,7 @@ Cada reseña utiliza la estructura `id`, `type`, `obraId` y `props`.
 | `props` | objeto | `{...}` | Propiedades que recibe ReviewCard |
 | `props.username` | texto | `"panem_fan"` | Nombre de usuario de quien escribe |
 | `props.rating` | número | `4` | Valoración de la obra, del 1 al 5 |
-| `props.text` | texto | `"La fotografía es preciosa…"` | Contenido de la reseña |
+| `props.text` | texto | `"La fotografía es preciosa…"` | Contenido de la reseña, se muestra siempre |
 | `props.userImage` | texto o no definido | `"/images/pfp/mia-pfp.jpg"` | Ruta de la foto de perfil. Si no se indica, se utiliza la imagen predeterminada |
 | `props.spoiler` | booleano | `false` | Indica si la reseña contiene spoilers |
 | `props.spoilerText` | texto | `""` | Texto que se muestra al revelar el spoiler |
